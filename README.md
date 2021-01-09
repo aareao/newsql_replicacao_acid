@@ -6,17 +6,21 @@
 <h1> NewSQL e Suporte à Replicação e Propriedades ACID </h1>
 
 ## Autores
-Andreza Silva Areão, 
-Bernardo Moreira Zabadal,
-Edinei Gonçalves Figueiredo
+-Andreza Silva Areão 
+-Bernardo Moreira Zabadal 
+-Edinei Gonçalves Figueiredo 
 
 ## Sumário
 
-- Autores (#Autores)
-- Sumário (#Sumário)
-- Introdução (#Introdução)
-- Como usar este tutorial (#Como-usar-este-tutorial)
-- Visão geral sobre SGBDs NewSQL (#Visão-geral-sobre-SGBDs-NewSQL)
+- [Autores](#autores)
+- [Sumário](#sumário)
+- [INTRODUÇÃO](#introdução)
+- [COMO USAR ESTE TUTORIAL](#como-usar-este-tutorial)
+- [VISÃO GERAL SOBRE SGBDS NEWSQL](#visão-geral-sobre-sgbds-newsql)
+-- [SQL SERVER](#sql-server)
+-- [COCKROACHDB](#cockroachdb)
+-- [COMPARATIVO ENTRE SQL SERVER E COCKROACHDB](#comparativo-entre-sql-server-e-cockroachdb)
+
 
 
 
