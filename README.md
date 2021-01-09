@@ -14,8 +14,9 @@ Edinei Gonçalves Figueiredo
 
 - [Autores](#autores) 
 - [Sumário](#sumário)
-- [INTRODUÇÃO](#Introdução
-- [COMO USAR ESTE TUTORIAL] (# COMO USAR ESTE TUTORIAL)
+- [INTRODUÇÃO](#Introdução)
+- [COMO USAR ESTE TUTORIAL] (# COMO USAR ESTE TUTORIAL
+- [VISÃO GERAL SOBRE SGBDS NEWSQL (# VISÃO GERAL SOBRE SGBDS NEWSQL)
 
 ## INTRODUÇÃO
 
@@ -27,3 +28,9 @@ A base de dados definida para o projeto foi a NorthWind, base já utilizada em d
 ## COMO USAR ESTE TUTORIAL
 
 É possível fazer uma navegação sequencial, desde a instalação, importação dos dados e utilização dos bancos de dados apresentados, bem como ir diretamente ao ponto desejado clicando no sumário.
+
+## VISÃO GERAL SOBRE SGBDS NEWSQL
+
+O paradigma de banco de dados mais conhecido é Banco de Dados Relacionais (BDRs), mas com o grande volume de dados gerados e necessários na atualidade surgiu o paradigma NoSQL, porém ele não trazia em seu escopo as propriedades ACID, entre outras características consideradas importantes para um Banco de Dados, primando pela escalabilidade e agilidade em consultas. Tentando unir o melhor dos dois mundos, NoSQL e BDRs, recentemente, surgiu o paradigma NewSQL.Apesar de ser um paradigma, cada sistema executa as operações de manipulação de dados de forma diferente. 
+Knob et al (2019) afirma que este paradigma surgiu com “o propósito de combinar os benefícios do paradigma relacional com o tratamento de Big Data do paradigma NoSQL”. O autor traz os sistemas NewSQL como soluções modernas, que visam ter o mesmo desempenho escalável dos BDs NoSQL para cargas de trabalho de Processamento de Transações Online e com suporte completo as propriedades ACID. 
+Fatores importantes a serem considerados em um banco de dados NewSQL são: controle de concorrência de esquema lock-free; e, arquitetura distribuída shared-nothing, Stonebraker (2012) apud KNOB et al (2019).
