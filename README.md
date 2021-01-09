@@ -12,11 +12,12 @@ Edinei Gonçalves Figueiredo
 
 ## Sumário
 
-- [Autores](#autores) 
+- [Autores](# autores)
 - [Sumário](#sumário)
-- [INTRODUÇÃO](#Introdução)
-- [COMO USAR ESTE TUTORIAL] (#COMO-USAR-ESTE-TUTORIAL)
-- [VISÃO GERAL SOBRE SGBDS NEWSQL (# VISÃO-GERAL-SOBRE-SGBDS-NEWSQL)
+- [INTRODUÇÃO](# introdução)
+- [COMO USAR ESTE TUTORIAL] (#como-usar-este-tutorial)
+- [VISÃO GERAL SOBRE SGBDS NEWSQL (#visão-geral-sobre-sgbds-newsql)
+
 
 ## INTRODUÇÃO
 
