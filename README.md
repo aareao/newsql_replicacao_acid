@@ -15,7 +15,7 @@ Edinei Gonçalves Figueiredo
 - [Autores](#autores) 
 - [Sumário](#sumário)
 - [INTRODUÇÃO](#Introdução)
-- [COMO USAR ESTE TUTORIAL] (# COMO USAR ESTE TUTORIAL
+- [COMO USAR ESTE TUTORIAL] (# COMO USAR ESTE  TUTORIAL)
 - [VISÃO GERAL SOBRE SGBDS NEWSQL (# VISÃO GERAL SOBRE SGBDS NEWSQL)
 
 ## INTRODUÇÃO
