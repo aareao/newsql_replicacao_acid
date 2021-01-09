@@ -6,9 +6,9 @@
 <h1> NewSQL e Suporte à Replicação e Propriedades ACID </h1>
 
 ## Autores
--Andreza Silva Areão 
--Bernardo Moreira Zabadal 
--Edinei Gonçalves Figueiredo 
+- Andreza Silva Areão 
+- Bernardo Moreira Zabadal 
+- Edinei Gonçalves Figueiredo 
 
 ## Sumário
 - [Autores](#autores)
