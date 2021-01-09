@@ -14,12 +14,15 @@
 
 - [Autores](#autores)
 - [Sumário](#sumário)
-- [INTRODUÇÃO](#introdução)
+- [INTRODUÇÃO](#Introdução)
 - [COMO USAR ESTE TUTORIAL](#como-usar-este-tutorial)
 - [VISÃO GERAL SOBRE SGBDS NEWSQL](#visão-geral-sobre-sgbds-newsql)
--- [SQL SERVER](#sql-server)
--- [COCKROACHDB](#cockroachdb)
--- [COMPARATIVO ENTRE SQL SERVER E COCKROACHDB](#comparativo-entre-sql-server-e-cockroachdb)
+ - [SQL SERVER](#1-sql-server)
+ - [COCKROACHDB](#1-cockroachdb)
+ - [COMPARATIVO ENTRE SQL SERVER E COCKROACHDB](#comparativo-entre-sql-server-e-cockroachdb)
+- [INSTALAÇÃO E IMPORTAÇÃO BASE DE DADOS](#instalação-e-importação-base-de-dados)
+ - [COCKROACHDB](#2cockroachdb)
+
 
 
 
