@@ -11,17 +11,17 @@
 -Edinei Gonçalves Figueiredo 
 
 ## Sumário
-
 - [Autores](#autores)
 - [Sumário](#sumário)
-- [INTRODUÇÃO](#Introdução)
-- [COMO USAR ESTE TUTORIAL](#como-usar-este-tutorial)
-- [VISÃO GERAL SOBRE SGBDS NEWSQL](#visão-geral-sobre-sgbds-newsql)
- - [SQL SERVER](#1-sql-server)
- - [COCKROACHDB](#1-cockroachdb)
- - [COMPARATIVO ENTRE SQL SERVER E COCKROACHDB](#comparativo-entre-sql-server-e-cockroachdb)
-- [INSTALAÇÃO E IMPORTAÇÃO BASE DE DADOS](#instalação-e-importação-base-de-dados)
- - [COCKROACHDB](#2cockroachdb)
+- [Introdução](#introdução)
+- [Como usar este tutorial](#como-usar-este-tutorial)
+- [Cisão geral sobre sgbds newsql](#visão-geral-sobre-sgbds-newsql)
+ - [SQL Server](#1-sql-server)
+ - [CockroachDB](#1-cockroachdb)
+ - [Comparativo entre SQL Server e CcockroachDB](#comparativo-entre-sql-server-e-cockroachdb)
+- [Instalação e importação base de dados](#instalação-e-importação-base-de-dados)
+ - [CockroachDB](#2cockroachdb)
+
 
 
 
