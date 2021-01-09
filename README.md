@@ -1,3 +1,13 @@
 # newsql_replicacao_acid
-<h1> Tutorial sobre Suporte à Replicação e Propriedades ACID em NewSQL</h1> 
-<h2> Microsoft SQL Server e CockroachDB </h2>
+<p align="center">
+<br>Tópicos em Bancos de Dados  
+<br>Processamento Massivo de Dados
+<br>Profa. Sahudy Montenegro González </p>
+<h1> NewSQL e Suporte à Replicação e Propriedades ACID </h1>
+
+## Autores
+Andreza Silva Areão, 
+Bernardo Moreira Zabadal,
+Edinei Gonçalves Figueiredo
+
+
