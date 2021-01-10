@@ -1,30 +1,31 @@
-# newsql_replicacao_acid
 <p align="center">
 <br>Tópicos em Bancos de Dados  
 <br>Processamento Massivo de Dados
 <br>Profa. Sahudy Montenegro González </p>
 <h1> NewSQL e Suporte à Replicação e Propriedades ACID </h1>
 
-## Autores
+# Autores
 - Andreza Silva Areão
 - Bernardo Moreira Zabadal
 - Edinei Gonçalves Figueiredo
 
-## Sumário
+# Sumário
 - [Autores](#autores)
 - [Sumário](#sumário)
-- [Introdução](#introdução)
-- [Como usar este tutorial](#como-usar-este-tutorial)
-- [Visão geral sobre sgbds newsql](#visão-geral-sobre-sgbds-newsql)
- - [SQL Server](#1-sql-server)
- - [CockroachDB](#1-cockroachdb)
- - [Comparativo entre SQL Server e CcockroachDB](#comparativo-entre-sql-server-e-cockroachdb)
-- [Instalação e importação base de dados](#instalação-e-importação-base-de-dados)
- - [CockroachDB](#2cockroachdb)
+- [Introdução](#1-introdução)
+- [Como usar este tutorial](#2-como-usar-este-tutorial)
+- [Visão geral sobre sgbds newsql](#3-visão-geral-sobre-sgbds-newsql)
+ - [SQL Server](#31-sql-server)
+ - [CockroachDB](#32-cockroachdb)
+ - [Comparativo entre SQL Server e CcockroachDB](#33-comparativo-entre-sql-server-e-cockroachdb)
+- [Instalação e importação base de dados](#4-instalação-e-importação-base-de-dados)
+ - [CockroachDB](#41-cockroachdb)
+  - [Etapas Iniciais](#411-etapas-iniciais)
 
 
 
-## 1. INTRODUÇÃO
+
+# 1. INTRODUÇÃO
 
 Este tutorial nasce de um projeto da disciplina Tópicos em Bancos de Dados - Processamento Massivo de Dados, ministrada pela professora Dra. Sahudy Montenegro González, na UFSCar, câmpus Sorocaba.
 O objetivo é mostrar, de forma clara e prática, os principais pontos relacionados ao NewSQL e Suporte à Replicação e Propriedades ACID.
@@ -47,8 +48,7 @@ Fatores importantes a serem considerados em um banco de dados NewSQL são: contr
 O sistema de gerenciamento de banco de dados relacional desenvolvido pela Microsoft é Microsoft SQL Server (MICROSOFT, 2020). Teve seu lançamento em 1989 e está na versão SQL Server 2019. É escrito em C e C ++. Tendo suporte aos sistemas operacionais: Linux, Microsoft Windows Server e Microsoft Windows.
 No site da Microsoft, de venda de licenças, o SQL Server 2019 Standard Edition é apresentado com o marketing de que “pode ser o hub para seu acervo de dados, com a capacidade de consultar qualquer banco de dados, como Oracle, MongoDB, Cassandra e Hadoop, de um modo altamente seguro e com desempenho elevado”, conforme apresentado na figura a seguir. (https://www.microsoft.com/pt-br/store/b/software?icid=CNavSoftware).
 
-
-Figura 1 - Propaganda Microsoft SQL Server
+![Propaganda Microsoft SQL Server](images/sqlServerProp.png)
 Fonte: https://www.microsoft.com/pt-br/p/sql-server-2019-standard-edition/dg7gmgf0fkx9?icid=Cat-Professional-Software-Feature2-SQL-2019  
 
 
@@ -259,7 +259,7 @@ docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Names}}" #(descreve os nome
 
 O retorno esperado do comando deve ser assim, contendo o ID de cada node, a versão instalada de cada node e o nome de cada node:
 
-Após essa etapa, ne preciso acessar cada réplica, através do DOCKER nesse local:
+Após essa etapa, é preciso acessar cada réplica, através do DOCKER nesse local:
 
 Ao abrir o node, é necessário criar as seguintes pastas (essas pastas vão armazenar os arquivos .CSV). OBS: Pode ser necessário fazer essa etapa para todos os nós, caso a réplica não esteja funcionando adequadamente.
 
@@ -1153,6 +1153,7 @@ insert into shippers values(7,'Correios','3003-0100');
 ## 7. BENCHMARKING COCKROACHDB DOCS X SQL SERVER
 
 Não foi encontrado na literatura um benchmarking entre o CockroachDB e SQL Server. Nos benckmarking encontrados entre alguns outros sistemas NewSQL e o CockroachDB este ficou nas últimas posições.
+
 
 ## 8. CONCLUSÃO
 
