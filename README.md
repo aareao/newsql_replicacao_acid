@@ -494,7 +494,7 @@ Selecionar banco de dados northwind.
 Executar script de criação de tabelas abaixo:
 
 
- ### Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+ ### Nome: categories; Type: tabela; Schema: public; Owner: -; Tablespace: 
 
 ```bash
 create TABLE categories (
@@ -505,7 +505,7 @@ create TABLE categories (
 );
 ```
 
-### Name: customer_demographics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: customer_demographics
 
 ```bash
 CREATE TABLE customer_demographics (
@@ -515,7 +515,7 @@ CREATE TABLE customer_demographics (
 ```
 
 
-### Name: customers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: customers
 
 ```bash
 CREATE TABLE customers (
@@ -533,7 +533,7 @@ CREATE TABLE customers (
 );
 ```
 
-### Name: customer_customer_demo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: customer_customer_demo
 
 ```bash
 CREATE TABLE customer_customer_demo (
@@ -545,7 +545,7 @@ CREATE TABLE customer_customer_demo (
 );
 ```
 
-### Name: employees; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: employees
 
 ```bash
 create TABLE employees (
@@ -571,7 +571,7 @@ create TABLE employees (
 ```
 
 
-### Name: suppliers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: suppliers 
 
 ```bash
 CREATE TABLE suppliers (
@@ -591,7 +591,7 @@ CREATE TABLE suppliers (
 ```
 
 
-### Name: products; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: products
 
 ```bash
 CREATE TABLE products (
@@ -611,7 +611,7 @@ CREATE TABLE products (
 ```
 
 
-### Name: region; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: region
 
 ```bash
 create TABLE region (
@@ -621,7 +621,7 @@ create TABLE region (
 ```
 
 
-### Name: shippers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: shippers
 
 ```bash
 CREATE TABLE shippers (
@@ -632,7 +632,7 @@ CREATE TABLE shippers (
 ```
 
 
-### Name: orders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: orders
 
 ```bash
 CREATE TABLE orders (
@@ -657,7 +657,7 @@ CREATE TABLE orders (
 ```
 
 
-### Name: territories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: territories
 
 ```bash
 create TABLE territories (
@@ -668,7 +668,7 @@ create TABLE territories (
 );
 ```
 
-### Name: employee_territories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: employee_territories
 
 ```bash
 CREATE TABLE employee_territories (
@@ -681,7 +681,7 @@ CREATE TABLE employee_territories (
 ```
 
 
-### Name: order_details; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: order_details
 
 ```bash
 CREATE TABLE order_details (
@@ -697,7 +697,7 @@ CREATE TABLE order_details (
 ```
 
 
-### Name: us_states; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+### Nome: us_states
 
 ```bash
 CREATE TABLE us_states (
@@ -834,7 +834,7 @@ yum install drbd90-utils kmod-drbd90
 
 Ativar o carregamento do módulo do kernel durante o boot:
 ```bash
-	sudo chmod 777 -R /etc/modules-load.d/drbd.conf
+sudo chmod 777 -R /etc/modules-load.d/drbd.conf
 
 echo drbd > /etc/modules-load.d/drbd.conf
 ```
