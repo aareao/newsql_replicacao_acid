@@ -48,7 +48,7 @@ Fatores importantes a serem considerados em um banco de dados NewSQL são: contr
 O sistema de gerenciamento de banco de dados relacional desenvolvido pela Microsoft é Microsoft SQL Server (MICROSOFT, 2020). Teve seu lançamento em 1989 e está na versão SQL Server 2019. É escrito em C e C ++. Tendo suporte aos sistemas operacionais: Linux, Microsoft Windows Server e Microsoft Windows.
 No site da Microsoft, de venda de licenças, o SQL Server 2019 Standard Edition é apresentado com o marketing de que “pode ser o hub para seu acervo de dados, com a capacidade de consultar qualquer banco de dados, como Oracle, MongoDB, Cassandra e Hadoop, de um modo altamente seguro e com desempenho elevado”, conforme apresentado na figura a seguir. (https://www.microsoft.com/pt-br/store/b/software?icid=CNavSoftware).
 
-![Propaganda Microsoft SQL Server](images/sqlServerProp.png =190x)
+![Propaganda Microsoft SQL Server](images/sqlServerProp.png)
 
 
 Fonte: https://www.microsoft.com/pt-br/p/sql-server-2019-standard-edition/dg7gmgf0fkx9?icid=Cat-Professional-Software-Feature2-SQL-2019  
