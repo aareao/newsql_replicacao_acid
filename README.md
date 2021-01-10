@@ -454,13 +454,19 @@ O seguinte link contém a box que será utilizada para o trabalho (Linux com SQL
 https://hub.docker.com/r/microsoft/mssql-server-linux/ 
 
 Para utilizar esta box, é necessário abrir o Docker e executar o seguinte comando:
+```bash
 docker pull microsoft/mssql-server-linux
+```
 
 Caso queira utilizar uma imagem mais atual, podemos utilizar o comando abaixo:
+```bash
 docker pull mcr.microsoft.com/mssql/servera
+```
 
 Iniciar uma instancia do docker com a imagem baixada:
+```bash
 docker run -d --name Homer -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@ssw0rd!' -p 1433:1433 microsoft/mssql-server-linux
+```
 
 OBS: Caso ocorra um erro nesta etapa, refazer o comando substituindo o password por um mais forte.
 
@@ -470,44 +476,48 @@ Executar a instalação do Azure Data Studio através do link
 https://docs.microsoft.com/en-gb/sql/azure-data-studio/download-azure-data-studio?view=sql-server-2017
 
 Conectar ao banco de dados, com as seguintes informações:
+```bash
 Server Name: localhost
 Authentication Type: SQL Login
 User name: sa
 Password: <password>
 Database Name: <default>
 Server Group: <default>
+```
 
 Executar script de criação de banco, abaixo:
+```bash
 	create database northwind;
+	```
 
 Selecionar banco de dados northwind.
 Executar script de criação de tabelas abaixo:
---
--- Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
 
+
+ ### Name: categories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+
+```bash
 create TABLE categories (
     category_id int NOT NULL PRIMARY KEY,
     category_name character varying(15) NOT NULL,
     description text,
     picture image
 );
+```
 
+### Name: customer_demographics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
---
--- Name: customer_demographics; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
-
+```bash
 CREATE TABLE customer_demographics (
     customer_type_id varchar(10) NOT NULL PRIMARY KEY,
     customer_desc text
 );
+```
 
 
---
--- Name: customers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: customers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE customers (
     customer_id varchar(10) NOT NULL PRIMARY KEY,
     company_name character varying(40) NOT NULL,
@@ -521,11 +531,11 @@ CREATE TABLE customers (
     phone character varying(24),
     fax character varying(24)
 );
+```
 
---
--- Name: customer_customer_demo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: customer_customer_demo; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE customer_customer_demo (
     customer_id varchar(10) NOT NULL,
     customer_type_id varchar(10) NOT NULL,
@@ -533,11 +543,11 @@ CREATE TABLE customer_customer_demo (
     FOREIGN KEY (customer_type_id) REFERENCES customer_demographics,
     FOREIGN KEY (customer_id) REFERENCES customers
 );
+```
 
---
--- Name: employees; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: employees; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 create TABLE employees (
     employee_id int NOT NULL PRIMARY KEY,
     last_name varchar(20) NOT NULL,
@@ -558,12 +568,12 @@ create TABLE employees (
     reports_to smallint,
     photo_path character varying(255)
 );
+```
 
 
---
--- Name: suppliers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: suppliers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE suppliers (
     supplier_id smallint NOT NULL PRIMARY KEY,
     company_name character varying(40) NOT NULL,
@@ -578,12 +588,12 @@ CREATE TABLE suppliers (
     fax character varying(24),
     homepage text
 );
+```
 
 
---
--- Name: products; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: products; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE products (
     product_id smallint NOT NULL PRIMARY KEY,
     product_name character varying(40) NOT NULL,
@@ -598,33 +608,33 @@ CREATE TABLE products (
 	FOREIGN KEY (category_id) REFERENCES categories,
 	FOREIGN KEY (supplier_id) REFERENCES suppliers
 );
+```
 
 
---
--- Name: region; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: region; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 create TABLE region (
     region_id int NOT NULL PRIMARY KEY,
     region_description varchar(20) NOT NULL
 );
+```
 
 
---
--- Name: shippers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: shippers; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE shippers (
     shipper_id smallint NOT NULL PRIMARY KEY,
     company_name character varying(40) NOT NULL,
     phone character varying(24)
 );
+```
 
 
---
--- Name: orders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: orders; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE orders (
     order_id smallint NOT NULL PRIMARY KEY,
     customer_id varchar(10),
@@ -644,23 +654,23 @@ CREATE TABLE orders (
     FOREIGN KEY (employee_id) REFERENCES employees,
     FOREIGN KEY (ship_via) REFERENCES shippers
 );
+```
 
 
---
--- Name: territories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: territories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 create TABLE territories (
     territory_id varchar(20) NOT NULL PRIMARY KEY,
     territory_description varchar(50) NOT NULL,
     region_id int NOT NULL,
 	FOREIGN KEY (region_id) REFERENCES region
 );
+```
 
---
--- Name: employee_territories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: employee_territories; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE employee_territories (
     employee_id int NOT NULL,
     territory_id character varying(20) NOT NULL,
@@ -668,12 +678,12 @@ CREATE TABLE employee_territories (
     FOREIGN KEY (territory_id) REFERENCES territories,
     FOREIGN KEY (employee_id) REFERENCES employees
 );
+```
 
 
---
--- Name: order_details; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: order_details; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE order_details (
     order_id smallint NOT NULL,
     product_id smallint NOT NULL,
@@ -684,19 +694,19 @@ CREATE TABLE order_details (
     FOREIGN KEY (product_id) REFERENCES products,
     FOREIGN KEY (order_id) REFERENCES orders
 );
+```
 
 
---
--- Name: us_states; Type: TABLE; Schema: public; Owner: -; Tablespace: 
---
+### Name: us_states; Type: TABLE; Schema: public; Owner: -; Tablespace: 
 
+```bash
 CREATE TABLE us_states (
     state_id smallint NOT NULL PRIMARY KEY,
     state_name character varying(100),
     state_abbr character varying(2),
     state_region character varying(50)
 );
-
+```
 
 Para popular o Banco de Dados utilizar o Script disponível no anexo.
 
@@ -776,115 +786,164 @@ kubectl get pods
 5.2 SQL SERVER
 
 Instalar pacotes necessários para que o Docker engine funcione corretamente:
+```bash
 sudo yum install yum-utils
+```
 
 Adicionar o repositório ao sistema:
+```bash
 sudo yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
+```
 
 Instalar o Docker Engine:
+```bash
 sudo yum install  -y docker-ce
+```
 
 Executar os Daemons do Docker e ativar o serviço na inicialização do sistema:
+```bash
 sudo systemctl start docker
 sudo systemctl enable docker
+```
 
 
 Adicionar o usuário atual logado no grupo de usuário Docker:
+```bash
 sudo gpasswd -a "${USER}" docker
+```
 
 Com isso realizado, reinicie o sistema:
+```bash
 sudo reboot
+```
 
 Após o sistema iniciar normalmente, utilize esse comando para testar o Docker
+```bash
 docker ps -a
+```
 
 Instalar o pacote do repositório EPEL (versão 8):
+```bash
 rpm -Uvh http://www.elrepo.org/elrepo-release-8.e18.elrepo.noarch.rpm
+```
 
 Instalar os pacotes do DRDB:
+```bash
 yum install drbd90-utils kmod-drbd90
+```
 
 Ativar o carregamento do módulo do kernel durante o boot:
+```bash
 	sudo chmod 777 -R /etc/modules-load.d/drbd.conf
+
 echo drbd > /etc/modules-load.d/drbd.conf
+```
 
 Instalar pacotes necessários para utilizar a ferramenta drbdmanage:
+```bash
 yum install wget pygobject2 -y
 wget http://www.linbit.com/downloads/drbdmanage/drbdmanage-0.99.14.tar.gz
 tar -xvzf drbdmanage-0.99.14.tar.gz -C /opt/
 cd /opt/drbdmanage-0.99.14/
 ./setup.py build
 ./setup.py install
+```
 
 Alterar o nome padrão para containersData:
+```bash
 sed -r ‘s/^#(.*drbdctrl-vg.*)$/\1/’ -i /etc/drbdmanaged.cfg
 sed ‘s/drbdpool/containersData\n/g’ -i /etc/drbdmanaged.cfg 
+```
 
 
 Criar partição primária na segunda unidade de disco:
+```bash
 pvcreate /dev/sdb1
+```
 
 
 Criar um volume físico e um volume lógico chamado containersData:
+```bash
 vgcreate containersData /dev/sdb1
+```
 
 
 Criar um par de chaves para permitir comunicação via SSH:
 [containernode01]
+```bash
 ssh-keygen -t rsa
 scp .ssh/id_rsa.pub root@192.168.0.162:/root/.
+```
 
 [containernode02]
 
 
 
 
-
+```bash
 ssh-keygen -t rsa
 scp .ssh/id_rsa.pub root@192.168.0.161:/root/.
 cat id_rsa.pub >> .ssh/authorized_keys
+```
 
 [containernode01]
 
-
+```bash
 cat id_rsa.pub >> .ssh/authorized_keys
+```
 
 Editar o arquivo /etc/hosts nos dois nodes:
+```bash
 192.168.0.161 containernode01 containernode01.lab.local
 192.168.0.162 containernode02 containernode02.lab.local
+```
 
 Testar se a comunicação está funcionando:
 [containernode01]
+```bash
 ssh 192.168.0.162 hostname
 ssh containernode02 hostname
+```
 
 OBS: devemos ter como resposta de ambos os comandos o ip 192.168.0.162.
 
 Testar se a comunicação está funcionando:
 [continernode02]
 
-
+```bash
 ssh 192.168.0.161 hostname
 ssh containernode01 hostname
+```
 
 OBS: devemos ter como resposta de ambos os comandos o ip 192.168.0.161.
 
 Com os nodes conversando entre si, podemos acessar o drdbmanage com o seguinte comando (no containernode01):
+```bash
 drbdmanage init 192.168.0.161
+```
 
 Verificar se os 2 volumes DRDB foram criados:
+```bash
 drbdadm status
+```
 
 Associar o segundo nó ao cluster (containernode01):
+```bash
 drbdmanage add-node containernode02.lab.local 192.168.0.162
+```
 
 Listar nós:
+```bash
 drbdmanage list-nodes
+```
 
 Verificar o status da replicação:
+```bash
 drbdadm status
+```
 
 Em ambos os nós do cluster, realizar o download desses plugins:
+```bash
 wget http://www.linbit.com/downloads/connectors/drbdmanage-docker-volume-0.7.tar.gz
 tar -xvzf drbdmanage-docker-volume-0.7.tar.gz -C /opt/
 cd /opt/drbdmanage-docker-volume-0.7/
@@ -895,39 +954,48 @@ mv docker-drbdmanage-plugin.service /etc/systemd/system/multi-user.target.wants/
 systemctl daemon-reload
 systemctl start docker-drbdmanage-plugin
 systemctl status docker-drbdmanage-plugin
+```
 
 
 Criar um volume de dados (containernode01):
-
-
-
-
-
+```bash
 docker volume create -d drbdmanage –name=volumeDatabase  –opt fs=ext4 –opt size=400
 docker volume ls
 lvs
+```
 
 Criar um container para executar o Microsoft SQL Server:
+```bash
 docker run –name SQLServer01 -e ‘ACCEPT_EULA=Y’ \
 -e ‘SA_PASSWORD=#AdminSQLServer2017’  \
 -p 1433:1433  -v volumeDatabase:/var/opt/mssql  \
 -d microsoft/mssql-server-linux
+```
 
 Verificar se o container está em execução:
+```bash
 docker ps -a
+```
 
 Verificar se as propriedades dos volumes estão corretas:
+```bash
 docker volume inspect volumeDatabase
+```
 
 Confirmar que o volume está sob um device de replicação em bloco DRBD:
+```bash
 mount | grep volumeDatabase
+```
 
 Listar os datafiles do serviço do SQL Server:
+```bash
 ls /var/run/docker/drbdmanage/mnt/volumeDatabase/
+```
 
 executar o sqlcmd:
+```bash
 docker exec -it SQLServer01 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P#AdminSQLServer2017
-
+```
 
 6. PROPRIEDADES ACID
 
@@ -948,24 +1016,28 @@ COMMIT
 Testar Durabilidade
 SELECT *FROM Shippers;
 
-
 6.2 SQL SERVER
 
 
 Atomicidade
+```bash
 select * from categories;
 insert into categories values (1,'Fish','Fish','\x')
+```
 
 Consistência
+```bash
 select * from customers;
 delete from customers 
 where customer_id = 'ALFKI';
+```
 
 Isolamento e Durabilidade
+```bash
 select * from shippers;
 delete from shippers
 where shipper_id=7;
-
+```
 insert into shippers values(7,'Correios','3003-0100');
 
 
