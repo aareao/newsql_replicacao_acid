@@ -487,7 +487,7 @@ Server Group: <default>
 
 Executar script de criação de banco, abaixo:
 ```bash
-	create database northwind;
+create database northwind;
 ```
 
 Selecionar banco de dados northwind.
