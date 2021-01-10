@@ -911,13 +911,13 @@ docker ps -a
 Instalar o pacote do repositório EPEL (versão 8):
 
 ```bash
-rpm -Uvh http://www.elrepo.org/elrepo-release-8.e18.elrepo.noarch.rpm
+sudo rpm -Uvh http://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
 ```
 
 Instalar os pacotes do DRDB:
 
 ```bash
-yum install drbd90-utils kmod-drbd90
+sudo yum install drbd90-utils kmod-drbd90
 ```
 
 Ativar o carregamento do módulo do kernel durante o boot:
