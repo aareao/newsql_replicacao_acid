@@ -1116,20 +1116,103 @@ As propriedades ACID das transações permitem que você escreva aplicações se
 
 ## 6.1 COCKROACHDB
 
-Testar Atomicidade:
+Para verificarmos se o banco de dados criado está respeitando as pripriedades ACID, é necessário realizar algumas operações. Para verificar a durabiliade do banco, foi feito a replicação, que permite que os dados se tornem duráveis e disponíveis.
+
+Para verificarmos a atomicidade, consistência e isolamento de dados, podemos realizar uma transação, que tem como ideal executar um bloco de comandos como INSERT, UPDATE e DELETE de forma sequencial e conjunta. Dependendo do resultado dos comandos, podemos realizar um COMMIT, que aceita todas as mudanças, ou um ROLLBACK, que retorna o banco de dados para o estado anterior a execução destes comandos. 
+
+Vamos testar o banco de dados criado com uma transação que contém 60 comandos, entre eles 40 INSERT, 10 UPDATE e 10 DELETE. para iniciarmos a transação, precisamos executar este comando:
 
 ```bash
-Begin Transaction
-INSERT INTO Shippers VALUES (100, “Boituva”, 551533333333);
-UPDATE Shippers set phone = 5515666666666 where shipperID = 100;
-COMMIT
+BEGIN TRANSACTION;
 ```
 
-Testar Durabilidade:
+Caso todos os comandos funcionem sem erro, realizaremos este comando, que vai salvar todos as informações:
 
 ```bash
-SELECT *FROM Shippers;
+COMMIT;
 ```
+
+Contudo, se pelo menos um dos comandos der algum erro, realziaremos este comando, que vai excluir todos os comandos dentro da transação, tanto aqueles que executaram normalmente ou apresentaram algum erro:
+
+```bash
+ROLLBACK;
+```
+
+Abaixo, segue a transação completa contendo 60 comandos, utilizado para testes:
+
+```bash
+BEGIN TRANSACTION;  
+INSERT INTO employee¬¬_territories VALUES (10, '55440');
+INSERT INTO employee¬¬_territories VALUES (11, '55441');
+INSERT INTO employee¬¬_territories VALUES (12, '55442');
+INSERT INTO employee¬¬_territories VALUES (13, '55443');
+INSERT INTO employee¬¬_territories VALUES (14, '55444');
+INSERT INTO employee¬¬_territories VALUES (15, '55445');
+INSERT INTO employee¬¬_territories VALUES (16, '55446');
+INSERT INTO employee¬¬_territories VALUES (17, '55447');
+INSERT INTO employee¬¬_territories VALUES (18, '55448');
+INSERT INTO employee¬¬_territories VALUES (19, '55449');
+INSERT INTO employee¬¬_territories VALUES (20, '55450');
+INSERT INTO employee¬¬_territories VALUES (21, '55451');
+INSERT INTO employee¬¬_territories VALUES (22, '55452');
+INSERT INTO employee¬¬_territories VALUES (23, '55453');
+INSERT INTO employee¬¬_territories VALUES (24, '55454');
+INSERT INTO employee¬¬_territories VALUES (25, '55455');
+INSERT INTO employee¬¬_territories VALUES (26, '55456');
+INSERT INTO employee¬¬_territories VALUES (27, '55457');
+INSERT INTO employee¬¬_territories VALUES (28, '55458');
+INSERT INTO employee¬¬_territories VALUES (29, '55459');
+INSERT INTO employee¬¬_territories VALUES (30, '55460');
+INSERT INTO employee¬¬_territories VALUES (31, '55461');
+INSERT INTO employee¬¬_territories VALUES (32, '55462');
+INSERT INTO employee¬¬_territories VALUES (33, '55463');
+INSERT INTO employee¬¬_territories VALUES (34, '55464');
+INSERT INTO employee¬¬_territories VALUES (35, '55465');
+INSERT INTO employee¬¬_territories VALUES (36, '55466');
+INSERT INTO employee¬¬_territories VALUES (37, '55467');
+INSERT INTO employee¬¬_territories VALUES (38, '55468');
+INSERT INTO employee¬¬_territories VALUES (39, '55469');
+INSERT INTO employee¬¬_territories VALUES (40, '55470');
+INSERT INTO employee¬¬_territories VALUES (41, '55471');
+INSERT INTO employee¬¬_territories VALUES (42, '55472');
+INSERT INTO employee¬¬_territories VALUES (43, '55473');
+INSERT INTO employee¬¬_territories VALUES (44, '55474');
+INSERT INTO employee¬¬_territories VALUES (45, '55475');
+INSERT INTO employee¬¬_territories VALUES (46, '55476');
+INSERT INTO employee¬¬_territories VALUES (47, '55477');
+INSERT INTO employee¬¬_territories VALUES (48, '55478');
+INSERT INTO employee¬¬_territories VALUES (49, '55479');
+INSERT INTO employee¬¬_territories VALUES (50, '55480');
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 41;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 42;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 43;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 44;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 45;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 46;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 47;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 48;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 49;
+UPDATE employee¬¬_territories SET TerritoryID = '99999' WHERE  EmployeeID = 50;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 21;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 22;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 23;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 24;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 25;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 26;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 27;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 28;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 29;
+DELETE FROM employee¬¬_territories WHERE  EmployeeID = 30;
+COMMIT;
+```
+
+Com o COMMIT realziado com sucesso, realize este comando para ver todos os dados salvos:
+
+```bash
+SELECT * FROM employee¬¬_territories;
+```
+
+Este comando deverá retornar 80 linhas, contendo tanto os dados anteriores, bem como todos os dados inseridos e atualizados. Dessa forma, percebemos que a transação permite manter um banco de dados atômico, consistente e isolado, já que propriedades ACID são essenciais para o bom funcionamento do bando de dados, permitindo que ele realize suas atribuições mantendo as informações confiáveis e seguras.
 
 ## 6.2 SQL SERVER
 
