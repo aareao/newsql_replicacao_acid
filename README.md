@@ -144,6 +144,10 @@ Esse comando realiza o acesso a pasta aonde a box do cockroachDB foi baixada. Ve
 ```
 
 Devemos ter como resposta a seguinte mensagem:
+![Version](images/crdbVersion.png)
+
+Fonte: Captura de tela de execução
+
 
 OBS: é necessário utilizar “.\” todas as vezes que algum comando do cockroach for utilizado no Windows (powershell ou CMD)
 Com o docker e o Cockroach instalados corretamente, precisamos criar uma bridge, que vai facilitar a comunicação entre os contêineres. É possível fazer isso com o seguinte comando
@@ -199,7 +203,21 @@ Com os nós criados, precisamos iniciar os mesmos, para que possamos utilizar os
 OBS1: o --insecure inicia os nós de forma insegura, não necessitando de qualquer certificado, --store é a pasta de armazenamento de cada nó, --listem-addr e http-addr são as portas que serão utilizadas para comunicação e acesso aos nodes.
 OBS2: é possível iniciar os nós manualmente caso tenha problemas no Windows 10.
 
+![Start](images/crdbStart.png)
+
+Fonte: Captura de tela de execução
+
+
 Com os comandos executados corretamente, é possível verificar através do Docker que os nodes estão funcionando ou pelo navegador, acessando a “http:addr”.
+
+![Nós](images/crdbNodes.png)
+
+Fonte: Captura de tela de execução
+
+![Nós](images/crdbNodes2.png)
+
+Fonte: Captura de tela de execução
+
 
 
 ### 4.1.3 IMPORTAÇÃO DOS DADOS
@@ -1118,7 +1136,7 @@ Não foi encontrado na literatura um benchmarking entre o CockroachDB e SQL Serv
 # 8. CONCLUSÃO
 Nota-se que o CockroachDB nasceu "NewSQL", por este motivo traz as funcionalidades e características esperadas para um sistema de banco de dados neste paradigma, já o SQL Server é um sistema antigo, que vem se ajustando ao longo de sua história para atender os requisitos do mercado em que atua.
 Os clientes SQL Server analisando o custo-benefício de uma troca de banco de dados e muitas vezes preferem ficar com o sistema atual, com isto a Microsoft tem um público considerável, disponibilizando suporte e atualizações para atender a este novo paradigma.
- 
+
 
 # REFERÊNCIAS
 
