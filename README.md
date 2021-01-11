@@ -763,7 +763,11 @@ Depois realize esse comando para verificar se os pods foram criados corretamente
 kubectl get pods
 ```
 
-a resposta deve ser essa
+a resposta deve ser essa:
+
+![Kubernetes](images/crdbKubernetes.png)
+
+Fonte: Captura de tela de execução
 
 Depois, precisamos fazer com que os 3 nodes iniciem juntos em um mesmo cluster. Podemos fazer isso com o seguinte comando:
 
@@ -779,6 +783,9 @@ kubectl get job cluster-init
 
 O resultado esperado é mostrado abaixo:
 
+![Create](images/crbdKubectlCreate.png)
+
+Fonte: Captura de tela de execução
 
 Use o comando abaixo para acessar ao SQL:
 
@@ -804,8 +811,11 @@ INSERT INTO bank.accounts (balance)
 SELECT * FROM bank.accounts;
 ```
 
-O resultado esperado para esses comando deve ser parecido com isso:
+O resultado esperado para esses comandos deve ser parecido com isso:
 
+![Run](images/crdbKubectlRun.png)
+
+Fonte: Captura de tela de execução
 
 Realize o seguinte comando para redirecionar as portas para a 8080 no host e permitir acesso ao node via navegador:
 
