@@ -58,7 +58,7 @@
 Este tutorial nasce de um projeto da disciplina Tópicos em Bancos de Dados - Processamento Massivo de Dados, ministrada pela professora Dra. Sahudy Montenegro González, na UFSCar, câmpus Sorocaba.
 O objetivo é mostrar, de forma clara e prática, os principais pontos relacionados ao NewSQL e Suporte à Replicação e Propriedades ACID.
 Os bancos de dados escolhidos foram o Microsoft SQL Server o CockroachDB, o primeiro por ser um dos mais utilizados no mercado corporativo e o segundo pela afinidade da equipe.
-A base de dados definida para o projeto foi a NorthWind, base já utilizada em diversos tutoriais, cursos e exemplos, criada como exemplo no Microsoft Access e difundida até hoje.
+A base de dados definida para o projeto foi a NorthWind, base já utilizada em diversos tutoriais, cursos e exemplos, criada como exemplo no Microsoft Access e difundida até hoje, podendo ser consultada em https://docs.yugabyte.com/latest/sample-data/northwind/.
 Utilizamos como referências principais as documentações  oficiais dos sistemas escolhidos: COCKROACH LABS (EUA) - https://www.cockroachlabs.com/docs/stable/ e Microsoft SQL documentation - https://docs.microsoft.com/en-us/sql/?view=sql-server-ver15.
 
 
