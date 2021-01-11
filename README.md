@@ -20,7 +20,22 @@
  - [Comparativo entre SQL Server e CcockroachDB](#33-comparativo-entre-sql-server-e-cockroachdb)
 - [Instalação e importação base de dados](#4-instalação-e-importação-base-de-dados)
  - [CockroachDB](#41-cockroachdb)
-  - [Etapas Iniciais](#411-etapas-iniciais)
+ - [Etapas Iniciais](#411-etapas-iniciais)
+  - [Criando e Iniciando os Nós](#412-criando-e-iniciando-os-nós)
+   - [Criando os nós](#4121-criando-os-nós)
+   - [Adicionar variáveis de ambiente ZONEINFO Windows](#4122-adicionar-variáveis-de-ambiente-zoneinfo-windows)
+   - [Iniciando os Nós](#4123-iniciando-os-nós)
+  - [Importação dos dados](#413-importação-dos-dados)
+   - [Importar os dados da máquina local para o Docker](#4131-importar-os-dados-da-máquina-local-para-o-docker)
+   - [Acesso ao banco de dados](#4132-acesso-ao-banco-de-dados)
+    - [Criação da base de dados](#41321-criação-da-base-de-dados)
+    - [Criação das tabelas e importando os dados](#41322-criação-das-tabelas-e-importando-os-dados)
+  - [SQL Server](#42-sql-server)
+
+
+
+
+
 
 
 
@@ -68,7 +83,7 @@ Trazemos a comparação das propriedades dos sistemas CockroachDB e Microsoft SQ
 O CockroachDB é um banco de dados mais jovem, com cerca de 5 anos de desenvolvimento, enquanto o Microsoft SQL Server tem mais de 30 anos, o que lhe traz uma certa robustez e clientes já consolidados.
 O CockroachDB permite a utilização em mais sistemas operacionais, tem mais suporte as linguagens de programação fora das linguagens da Microsoft.
 O SQL Server tem mais APIs e outros métodos de acesso que o CockroachDB, que possui apenas o método JDBC. Além do SQL Server permitir Scripts do lado do servidor e Triggers enquanto o CockroachDB não.
-O CockroachDB possui replicação de múltiplas fonte utilizando RAFT e o SQL Server oferece métodos de replicação dependendo da versão adquirida.
+O CockroachDB possui replicação de múltiplas fontes utilizando RAFT e o SQL Server oferece métodos de replicação dependendo da versão adquirida.
 
 
 ![Comparativo SQL Server e CockRoachDB](images/comparativo.png)
@@ -154,7 +169,7 @@ Para adicionar esse arquivo dentro das variáveis de ambiente, siga este caminho
 Sistema 🡪 Variáveis de ambiente 🡪 novo 🡪 Adicionar um nome e o arquivo e salvar.
 Caso seja necessário, reinicie a máquina.
 
-#### 4.1.2.2 INICIANDO OS NÓS
+#### 4.1.2.3 INICIANDO OS NÓS
 
 Com os nós criados, precisamos iniciar os mesmos, para que possamos utilizar os nodes. Precisamos iniciar cada nó separadamente através desses comandos:
 
