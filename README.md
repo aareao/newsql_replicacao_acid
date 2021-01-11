@@ -1,4 +1,4 @@
-<p align="center">
+benchmark<p align="center">
 <br>Tópicos em Bancos de Dados  
 <br>Processamento Massivo de Dados
 <br>Profa. Sahudy Montenegro González </p>
@@ -38,7 +38,7 @@
 - [Propriedades ACID](#6-propriedades-acid)
  - [CockroachDB](#61-cockroachdb)
  - [SQL Server](#62-sql-server)
-- [Benchmarking CockroachDB x SQL Server](#7-benchmarking-cockroachdb-x-sql-server)
+- [benchmark CockroachDB x SQL Server](#7-benchmark-cockroachdb-x-sql-server)
 - [Conclusão](#8-conclusão)
 - [Referências](#referências)
 - [Anexos](#anexos)
@@ -97,7 +97,7 @@ Trazemos a comparação das propriedades dos sistemas CockroachDB e Microsoft SQ
 
 O CockroachDB é um banco de dados mais jovem, com cerca de 5 anos de desenvolvimento, enquanto o Microsoft SQL Server tem mais de 30 anos, o que lhe traz uma certa robustez e clientes já consolidados.
 O CockroachDB permite a utilização em mais sistemas operacionais, tem mais suporte as linguagens de programação fora das linguagens da Microsoft.
-O SQL Server tem mais APIs e outros métodos de acesso que o CockroachDB, que possui apenas o método JDBC. Além do SQL Server permitir Scripts do lado do servidor e Triggers enquanto o CockroachDB não.
+O SQL Server tem mais APIs e outros métodos de acesso que o CockroachDB, que possui apenas o método JDBC. Além do SQL Server permitir *scripts* do lado do servidor e Triggers enquanto o CockroachDB não.
 O CockroachDB possui replicação de múltiplas fonte utilizando RAFT e o SQL Server oferece métodos de replicação dependendo da versão adquirida.
 
 
@@ -499,14 +499,14 @@ Database Name: <default>
 Server Group: <default>
 ```
 
-Executar script de criação de banco, abaixo:
+Executar *script* de criação de banco, abaixo:
 
 ```bash
 create database northwind;
 ```
 
 Selecionar banco de dados northwind.
-Executar script de criação de tabelas abaixo:
+Executar *script* de criação de tabelas abaixo:
 
 
 #### Nome: categories; Type: tabela; Schema: public; Owner: -; Tablespace:
@@ -723,7 +723,7 @@ CREATE TABLE us_states (
 );
 ```
 
-Para popular o Banco de Dados utilizar o Script disponível no anexo.
+Para popular o Banco de Dados utilizar o *script* disponível no anexo.
 
 
 # 5. REPLICAÇÃO
@@ -775,7 +775,7 @@ Depois, precisamos fazer com que os 3 nodes iniciem juntos em um mesmo cluster. 
 kubectl create -f https://raw.githubusercontent.com/cockroachdb/cockroach/master/cloud/kubernetes/cluster-init.yaml
 ```
 
-Podemos verificar se o cluster foi criado corretamente com esse comando:
+Podemos verificar se o *cluster* foi criado corretamente com esse comando:
 
 ```bash
 kubectl get job cluster-init
@@ -822,7 +822,7 @@ Realize o seguinte comando para redirecionar as portas para a 8080 no host e per
 ```bash
 kubectl port-forward service/cockroachdb-public 8080
 ```
-Vá ao navegador e entre em http://localhost:8080/ e verifique se você tem acesso ao cluster e se existem 3 nodes.
+Vá ao navegador e entre em http://localhost:8080/ e verifique se você tem acesso ao *cluster* e se existem 3 nodes.
 Também é possível verificar se os 3 clusters estão criados com esse comando:
 
 ```bash
@@ -1021,7 +1021,7 @@ Verificar se os 2 volumes DRDB foram criados:
 drbdadm status
 ```
 
-Associar o segundo nó ao cluster (containernode01):
+Associar o segundo nó ao *cluster* (containernode01):
 
 ```bash
 drbdmanage add-node containernode02.lab.local 192.168.0.162
@@ -1158,9 +1158,9 @@ where shipper_id=7;
 insert into shippers values(7,'Correios','3003-0100');
 ```
 
-# 7. BENCHMARKING COCKROACHDB X SQL SERVER
+# 7. *BENCHMARK* COCKROACHDB X SQL SERVER
 
-Não foi encontrado na literatura um benchmarking entre o CockroachDB e SQL Server. Nos benckmarking encontrados entre alguns outros sistemas NewSQL e o CockroachDB este ficou nas últimas posições.
+Não foi encontrado na literatura um *benchmark* entre o CockroachDB e SQL Server. Nos *benckmark* encontrados entre alguns outros sistemas NewSQL e o CockroachDB este ficou nas últimas posições.
 
 
 # 8. CONCLUSÃO
