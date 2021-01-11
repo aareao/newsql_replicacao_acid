@@ -324,7 +324,7 @@ IMPORT TABLE Categories (
 	CategoryName STRING NOT NULL,
 	Description STRING NOT NULL,
 	Picture STRING
-	)
+)
 CSV DATA ("nodelocal://1/CSV_NorthWind/categories.csv");
 
 IMPORT TABLE Customers (
