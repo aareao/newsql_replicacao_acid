@@ -144,6 +144,7 @@ Esse comando realiza o acesso a pasta aonde a box do cockroachDB foi baixada. Ve
 ```
 
 Devemos ter como resposta a seguinte mensagem:
+
 ![Version](images/crdbVersion.png)
 
 Fonte: Captura de tela de execução
@@ -214,6 +215,7 @@ Com os comandos executados corretamente, é possível verificar através do Dock
 
 Fonte: Captura de tela de execução
 
+
 ![Nós](images/crdbNodes2.png)
 
 Fonte: Captura de tela de execução
@@ -237,7 +239,16 @@ docker ps -a --format "table {{.ID}}\t{{.Image}}\t{{.Names}}" #(descreve os nome
 
 O retorno esperado do comando deve ser assim, contendo o ID de cada node, a versão instalada de cada node e o nome de cada node:
 
+![PS](images/crdbPS.png)
+
+Fonte: Captura de tela de execução
+
+
 Após essa etapa, é preciso acessar cada réplica, através do DOCKER nesse local:
+
+![Réplica](images/crdbReplica.png)
+
+Fonte: Captura de tela de execução
 
 Ao abrir o node, é necessário criar as seguintes pastas (essas pastas vão armazenar os arquivos .CSV). OBS: Pode ser necessário fazer essa etapa para todos os nós, caso a réplica não esteja funcionando adequadamente.
 
