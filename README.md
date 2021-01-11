@@ -31,6 +31,19 @@
     - [Criação da base de dados](#41321-criação-da-base-de-dados)
     - [Criação das tabelas e importando os dados](#41322-criação-das-tabelas-e-importando-os-dados)
   - [SQL Server](#42-sql-server)
+   - [Importação dos dados](#421-importação-dos-dados)
+- [Replicação](#5-replicação)
+ - [CockroachDB](#51-cockroachdb)
+ - [SQL Server](#52-sql-server)
+- [Propriedades ACID](#6-propriedades-acid)
+ - [CockroachDB](#61-cockroachdb)
+ - [SQL Server](#62-sql-server)
+- [Benchmarking CockroachDB x SQL Server](#7-benchmarking-cockroachdb-x-sql-server)
+- [Conclusão](#8-conclusão)
+- [Referências](#referências)
+- [Anexos](#anexos)
+
+
 
 
 
@@ -46,6 +59,8 @@ Este tutorial nasce de um projeto da disciplina Tópicos em Bancos de Dados - Pr
 O objetivo é mostrar, de forma clara e prática, os principais pontos relacionados ao NewSQL e Suporte à Replicação e Propriedades ACID.
 Os bancos de dados escolhidos foram o Microsoft SQL Server o CockroachDB, o primeiro por ser um dos mais utilizados no mercado corporativo e o segundo pela afinidade da equipe.
 A base de dados definida para o projeto foi a NorthWind, base já utilizada em diversos tutoriais, cursos e exemplos, criada como exemplo no Microsoft Access e difundida até hoje.
+Utilizamos como referências principais as documentações  oficiais dos sistemas escolhidos: COCKROACH LABS (EUA) - https://www.cockroachlabs.com/docs/stable/ e Microsoft SQL documentation - https://docs.microsoft.com/en-us/sql/?view=sql-server-ver15.
+
 
 # 2. COMO USAR ESTE TUTORIAL
 
@@ -83,7 +98,7 @@ Trazemos a comparação das propriedades dos sistemas CockroachDB e Microsoft SQ
 O CockroachDB é um banco de dados mais jovem, com cerca de 5 anos de desenvolvimento, enquanto o Microsoft SQL Server tem mais de 30 anos, o que lhe traz uma certa robustez e clientes já consolidados.
 O CockroachDB permite a utilização em mais sistemas operacionais, tem mais suporte as linguagens de programação fora das linguagens da Microsoft.
 O SQL Server tem mais APIs e outros métodos de acesso que o CockroachDB, que possui apenas o método JDBC. Além do SQL Server permitir Scripts do lado do servidor e Triggers enquanto o CockroachDB não.
-O CockroachDB possui replicação de múltiplas fontes utilizando RAFT e o SQL Server oferece métodos de replicação dependendo da versão adquirida.
+O CockroachDB possui replicação de múltiplas fonte utilizando RAFT e o SQL Server oferece métodos de replicação dependendo da versão adquirida.
 
 
 ![Comparativo SQL Server e CockRoachDB](images/comparativo.png)
@@ -465,7 +480,7 @@ Selecionar banco de dados northwind.
 Executar script de criação de tabelas abaixo:
 
 
- ### Nome: categories; Type: tabela; Schema: public; Owner: -; Tablespace:
+#### Nome: categories; Type: tabela; Schema: public; Owner: -; Tablespace:
 
 ```bash
 create TABLE categories (
@@ -476,7 +491,7 @@ create TABLE categories (
 );
 ```
 
-### Nome: customer_demographics
+#### Nome: customer_demographics
 
 ```bash
 CREATE TABLE customer_demographics (
@@ -592,7 +607,7 @@ create TABLE region (
 ```
 
 
-### Nome: shippers
+#### Nome: shippers
 
 ```bash
 CREATE TABLE shippers (
@@ -639,7 +654,7 @@ create TABLE territories (
 );
 ```
 
-### Nome: employee_territories
+#### Nome: employee_territories
 
 ```bash
 CREATE TABLE employee_territories (
@@ -1095,19 +1110,21 @@ where shipper_id=7;
 insert into shippers values(7,'Correios','3003-0100');
 ```
 
-# 7. BENCHMARKING COCKROACHDB DOCS X SQL SERVER
+# 7. BENCHMARKING COCKROACHDB X SQL SERVER
 
 Não foi encontrado na literatura um benchmarking entre o CockroachDB e SQL Server. Nos benckmarking encontrados entre alguns outros sistemas NewSQL e o CockroachDB este ficou nas últimas posições.
 
 
 # 8. CONCLUSÃO
-
+Nota-se que o CockroachDB nasceu "NewSQL", por este motivo traz as funcionalidades e características esperadas para um sistema de banco de dados neste paradigma, já o SQL Server é um sistema antigo, que vem se ajustando ao longo de sua história para atender os requisitos do mercado em que atua.
+Os clientes SQL Server analisando o custo-benefício de uma troca de banco de dados e muitas vezes preferem ficar com o sistema atual, com isto a Microsoft tem um público considerável, disponibilizando suporte e atualizações para atender a este novo paradigma.
+ 
 
 # REFERÊNCIAS
 
-COCKROACH LABS (EUA). CockroachDB   Docs. New York: Cockroach Labs, 2020. Disponível em: https://www.cockroachlabs.com/docs/stable/. Acesso em: 21  dez. 2020.
-KNOB, Ronan; SCHREINER, Geomar; FROZZA, Angelo; MELLO, Ronaldo dos Santos. Uma Análise de Soluções NewSQL. In: ESCOLA REGIONAL DE BANCO DE DADOS (ERBD), 15.2019, Chapecó. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2019 . p. 21-30. ISSN 2595-413X. DOI: https://doi.org/10.5753/erbd.2019.8475.
-MICROSOFT. Microsoft SQL documentation. [S. I.]: Microsoft, 2020. Disponível em: https://docs.microsoft.com/en-us/sql/?view=sql-server-ver15. Acesso em: 18 out. 2020.
+- COCKROACH LABS (EUA). CockroachDB   Docs. New York: Cockroach Labs, 2020. Disponível em: https://www.cockroachlabs.com/docs/stable/. Acesso em: 21  dez. 2020.
+- KNOB, Ronan; SCHREINER, Geomar; FROZZA, Angelo; MELLO, Ronaldo dos Santos. Uma Análise de Soluções NewSQL. In: ESCOLA REGIONAL DE BANCO DE DADOS (ERBD), 15.2019, Chapecó. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2019 . p. 21-30. ISSN 2595-413X. DOI: https://doi.org/10.5753/erbd.2019.8475.
+- MICROSOFT. Microsoft SQL documentation. [S. I.]: Microsoft, 2020. Disponível em: https://docs.microsoft.com/en-us/sql/?view=sql-server-ver15. Acesso em: 18 out. 2020.
 
 
 
