@@ -1103,7 +1103,16 @@ docker exec -it SQLServer01 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P#Ad
 
 # 6. PROPRIEDADES ACID
 
-ACID é a sigla utilizada para expressar um conjunto de propriedades de transação em banco de dados, como Atomicidade, Consistência, Isolamento e Durabilidade, do inglês: Atomicity, Consistency, Isolation, Durability.
+ACID é a sigla utilizada para expressar um conjunto de propriedades de transação em banco de dados, como Atomicidade, Consistência, Isolamento e Durabilidade, do inglês: Atomicity, Consistency, Isolation, Durability. Relembrando que transação é uma sequência de operações executadas como uma única unidade lógica de trabalho.
+
+- Atomicidade: Em uma transação envolvendo duas ou mais partes de informações discretas, ou a transação será executada totalmente ou não será executada, garantindo assim que as transações sejam atômicas.
+- Consistência: A transação cria um novo estado válido dos dados ou em caso de falha retorna todos os dados ao seu estado antes que a transação foi iniciada.
+- Isolamento: Uma transação em andamento mas ainda não validada deve permanecer isolada de qualquer outra operação, ou seja, garantimos que a transação não será interferida por nenhuma outra transação concorrente.
+- Durabilidade: Dados validados são registados pelo sistema de tal forma que mesmo no caso de uma falha e/ou reinício do sistema, os dados estão disponíveis em seu estado correto.
+
+As propriedades ACID das transações permitem que você escreva aplicações sem considerar o ambiente complexo em que o aplicativo é executado. Com transações ACID você pode se concentrar na lógica da aplicação e não na detecção de falhas, recuperação e sincronização do acesso aos dados compartilhados.  Fonte: https://medium.com/opensanca/o-que-%C3%A9-acid-59b11a81e2c6
+
+
 
 ## 6.1 COCKROACHDB
 
