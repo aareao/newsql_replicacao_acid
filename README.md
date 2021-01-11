@@ -325,7 +325,7 @@ IMPORT TABLE Categories (
 	Description STRING NOT NULL,
 	Picture STRING
 	)
-	CSV DATA ("nodelocal://1/CSV_NorthWind/categories.csv");
+CSV DATA ("nodelocal://1/CSV_NorthWind/categories.csv");
 
 IMPORT TABLE Customers (
 CustomerID STRING PRIMARY KEY,
@@ -346,14 +346,14 @@ IMPORT TABLE Regions (
 RegionID INT PRIMARY KEY,
 RegionDescription STRING NOT NULL
 )
-	CSV DATA (“nodelocal://1/CSV_NorthWind/regions.csv”);
+CSV DATA (“nodelocal://1/CSV_NorthWind/regions.csv”);
 
 IMPORT TABLE Shippers (
 shipperID INT PRIMARY KEY,
 companyName STRING NOT NULL,
 phone STRING NOT NULL
 )
-	   CSV DATA (“nodelocal://1/CSV_NorthWind/shippers.csv”);
+CSV DATA (“nodelocal://1/CSV_NorthWind/shippers.csv”);
 
 IMPORT TABLE Suppliers (
 supplierID INT PRIMARY KEY,
@@ -369,7 +369,7 @@ phone STRING NOT NULL,
 fax STRING,
 homePage STRING
 )
-	   CSV DATA (“nodelocal://1/CSV_NorthWind/suppliers.csv”);
+CSV DATA (“nodelocal://1/CSV_NorthWind/suppliers.csv”);
 
 IMPORT TABLE Territories (
 territoryID STRING PRIMARY KEY,
@@ -508,9 +508,6 @@ create database northwind;
 Selecionar banco de dados northwind.
 Executar *script* de criação de tabelas abaixo:
 
-
-#### Nome: categories; Type: tabela; Schema: public; Owner: -; Tablespace:
-
 ```bash
 create TABLE categories (
     category_id int NOT NULL PRIMARY KEY,
@@ -518,21 +515,10 @@ create TABLE categories (
     description text,
     picture image
 );
-```
-
-#### Nome: customer_demographics
-
-```bash
 CREATE TABLE customer_demographics (
     customer_type_id varchar(10) NOT NULL PRIMARY KEY,
     customer_desc text
 );
-```
-
-
-#### Nome: customers
-
-```bash
 CREATE TABLE customers (
     customer_id varchar(10) NOT NULL PRIMARY KEY,
     company_name character varying(40) NOT NULL,
@@ -546,11 +532,6 @@ CREATE TABLE customers (
     phone character varying(24),
     fax character varying(24)
 );
-```
-
-#### Nome: customer_customer_demo
-
-```bash
 CREATE TABLE customer_customer_demo (
     customer_id varchar(10) NOT NULL,
     customer_type_id varchar(10) NOT NULL,
@@ -558,11 +539,6 @@ CREATE TABLE customer_customer_demo (
     FOREIGN KEY (customer_type_id) REFERENCES customer_demographics,
     FOREIGN KEY (customer_id) REFERENCES customers
 );
-```
-
-#### Nome: employees
-
-```bash
 create TABLE employees (
     employee_id int NOT NULL PRIMARY KEY,
     last_name varchar(20) NOT NULL,
@@ -583,12 +559,6 @@ create TABLE employees (
     reports_to smallint,
     photo_path character varying(255)
 );
-```
-
-
-#### Nome: suppliers
-
-```bash
 CREATE TABLE suppliers (
     supplier_id smallint NOT NULL PRIMARY KEY,
     company_name character varying(40) NOT NULL,
@@ -603,12 +573,6 @@ CREATE TABLE suppliers (
     fax character varying(24),
     homepage text
 );
-```
-
-
-#### Nome: products
-
-```bash
 CREATE TABLE products (
     product_id smallint NOT NULL PRIMARY KEY,
     product_name character varying(40) NOT NULL,
@@ -623,33 +587,15 @@ CREATE TABLE products (
 	FOREIGN KEY (category_id) REFERENCES categories,
 	FOREIGN KEY (supplier_id) REFERENCES suppliers
 );
-```
-
-
-#### Nome: region
-
-```bash
 create TABLE region (
     region_id int NOT NULL PRIMARY KEY,
     region_description varchar(20) NOT NULL
 );
-```
-
-
-#### Nome: shippers
-
-```bash
 CREATE TABLE shippers (
     shipper_id smallint NOT NULL PRIMARY KEY,
     company_name character varying(40) NOT NULL,
     phone character varying(24)
 );
-```
-
-
-#### Nome: orders
-
-```bash
 CREATE TABLE orders (
     order_id smallint NOT NULL PRIMARY KEY,
     customer_id varchar(10),
@@ -669,23 +615,12 @@ CREATE TABLE orders (
     FOREIGN KEY (employee_id) REFERENCES employees,
     FOREIGN KEY (ship_via) REFERENCES shippers
 );
-```
-
-
-#### Nome: territories
-
-```bash
 create TABLE territories (
     territory_id varchar(20) NOT NULL PRIMARY KEY,
     territory_description varchar(50) NOT NULL,
     region_id int NOT NULL,
 	FOREIGN KEY (region_id) REFERENCES region
 );
-```
-
-#### Nome: employee_territories
-
-```bash
 CREATE TABLE employee_territories (
     employee_id int NOT NULL,
     territory_id character varying(20) NOT NULL,
@@ -693,12 +628,6 @@ CREATE TABLE employee_territories (
     FOREIGN KEY (territory_id) REFERENCES territories,
     FOREIGN KEY (employee_id) REFERENCES employees
 );
-```
-
-
-#### Nome: order_details
-
-```bash
 CREATE TABLE order_details (
     order_id smallint NOT NULL,
     product_id smallint NOT NULL,
@@ -709,12 +638,6 @@ CREATE TABLE order_details (
     FOREIGN KEY (product_id) REFERENCES products,
     FOREIGN KEY (order_id) REFERENCES orders
 );
-```
-
-
-#### Nome: us_states
-
-```bash
 CREATE TABLE us_states (
     state_id smallint NOT NULL PRIMARY KEY,
     state_name character varying(100),
