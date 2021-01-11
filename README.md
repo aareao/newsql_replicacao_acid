@@ -65,98 +65,26 @@ O Cockroach Labs (2020) informa que distribui o CockRoachDB nas versões Core,  
 
 Trazemos a comparação das propriedades dos sistemas CockroachDB e Microsoft SQL Server, realizado pelo site DB-Engines, disponível no endereço https://db-engines.com/en/system/CockroachDB%3BMicrosoft+SQL+Server.
 
-Tabela 1 - Comparativo SQL Server e CockRoachDB
-Nome
-CockroachDB
-Microsoft SQL Server
-Local na rede Internet
-www.cockroachlabs.com
-www.microsoft.com/en-us/sql-server
-Documentação técnica
-www.cockroachlabs.com/docs
-docs.microsoft.com/en-US/sql/sql-server
-Desenvolvedor
-Laboratórios de Baratas
-Microsoft
-lançamento inicial
-2015
-1989
-Lançamento atual
-20.2, novembro de 2020
-SQL Server 2019, novembro de 2019
-Licença
-Código aberto
-comercial
-Sistemas operacionais de servidor
-Linux
-macOS
-Windows
-Linux
-Windows
-Esquema de dados
-esquema dinâmico
-sim
-Suporte XML
-não
-sim
-APIs e outros métodos de acesso
-JDBC
-ADO.NET
-JDBC
-ODBC
-OLE DB
-Tabular Data Stream (TDS)
-Linguagens de programação suportadas
-C #
-C ++
-Clojure
-Go
-Java
-JavaScript (Node.js)
-PHP
-Python
-Ruby
-Rust
-C #
-C ++
-Delphi
-Go
-Java
-JavaScript (Node.js)
-PHP
-Python
-R
-Ruby
-Visual Basic
-Scripts do lado do servidor
-não
-Transact SQL, linguagens .NET, R, Python e (com SQL Server 2019) Java
-Triggers
-não
-sim
-Métodos de particionamento
-particionamento horizontal (por intervalo de chave)
-as tabelas podem ser distribuídas em vários arquivos (particionamento horizontal); fragmentando através da federação
-Métodos de replicação
-Replicação de múltiplas fontes usando RAFT
-sim, mas dependendo do SQL-Server Edition
-Recursos na memória
-não
-sim
-Conceitos de usuário
-Controle de acesso baseado em função
-direitos de acesso refinados de acordo com o padrão SQL
+O CockroachDB é um banco de dados mais jovem, com cerca de 5 anos de desenvolvimento, enquanto o Microsoft SQL Server tem mais de 30 anos, o que lhe traz uma certa robustez e clientes já consolidados.
+O CockroachDB permite a utilização em mais sistemas operacionais, tem mais suporte as linguagens de programação fora das linguagens da Microsoft.
+O SQL Server tem mais APIs e outros métodos de acesso que o CockroachDB, que possui apenas o método JDBC. Além do SQL Server permitir Scripts do lado do servidor e Triggers enquanto o CockroachDB não.
+O CockroachDB possui replicação de múltiplas fonte utilizando RAFT e o SQL Server oferece métodos de replicação dependendo da versão adquirida.
+
+
+![Comparativo SQL Server e CockRoachDB](images/comparativo.png)
+
+
 Fonte: https://db-engines.com/en/system/CockroachDB%3BMicrosoft+SQL+Server
 
 
-## 4. INSTALAÇÃO E IMPORTAÇÃO BASE DE DADOS
+# 4. INSTALAÇÃO E IMPORTAÇÃO BASE DE DADOS
 
 Abordaremos os passos iniciais para a instalação e operação dos sistemas Microsoft SQL Server e CockRoachDB, bem como a importação da base de dados NorthWind.
 
 
 ## 4.1 COCKROACHDB
 
-## 4.1.1 ETAPAS INICIAIS
+### 4.1.1 ETAPAS INICIAIS
 
 Para iniciar os trabalhos, é preciso baixar o cockroachDB através do seguinte link:
 https://www.cockroachlabs.com/docs/stable/install-cockroachdb-windows.html
@@ -197,9 +125,9 @@ docker network create -d bridge roachnet
 OBS: roachnet é o nome da bridge e pode ser alterado. Caso o nome seja alterado, não esqueça de alterar ele quando realizar outros comandos.
 
 
-## 4.1.2 CRIANDO E INICIANDO OS NÓS
+### 4.1.2 CRIANDO E INICIANDO OS NÓS
 
-## 4.1.2.1 CRIANDO OS NÓS
+##### 4.1.2.1 CRIANDO OS NÓS
 
 Com a bridge criada, podemos iniciar a criação dos nós. Os 3 comandos abaixo criarão 3 nodes:
 
@@ -215,7 +143,7 @@ OBS: --name designa o nome do node, --hostname designa o nome da máquina, --net
 
 OBS: verifique se os nomes das máquinas não estão em duplicidade, se as portas não estão em uso, se a box utilizada está correta, se a pasta que vai armazenar os nodes existe e possui permissão de escrita e leitura, se o parâmetro --insecure está sendo utilizado e se o comando está sendo executado como administrador.
 
-## 4.1.2.2 ADICIONAR VARIÁVEIS DE AMBIENTE ZONEINFO (WINDOWS)
+#### 4.1.2.2 ADICIONAR VARIÁVEIS DE AMBIENTE ZONEINFO (WINDOWS)
 
 Pode ser necessário adicionar esse arquivo para que o os nós iniciem normalmente. Para isso, realize os seguintes passos (Windows 10):
 
@@ -226,7 +154,7 @@ Para adicionar esse arquivo dentro das variáveis de ambiente, siga este caminho
 Sistema 🡪 Variáveis de ambiente 🡪 novo 🡪 Adicionar um nome e o arquivo e salvar.
 Caso seja necessário, reinicie a máquina.
 
-## 4.1.2.2 INICIANDO OS NÓS
+#### 4.1.2.2 INICIANDO OS NÓS
 
 Com os nós criados, precisamos iniciar os mesmos, para que possamos utilizar os nodes. Precisamos iniciar cada nó separadamente através desses comandos:
 
@@ -244,9 +172,9 @@ OBS2: é possível iniciar os nós manualmente caso tenha problemas no Windows 1
 Com os comandos executados corretamente, é possível verificar através do Docker que os nodes estão funcionando ou pelo navegador, acessando a “http:addr”.
 
 
-## 4.1.3 IMPORTAÇÃO DOS DADOS
+### 4.1.3 IMPORTAÇÃO DOS DADOS
 
-## 4.1.3.1 IMPORTAR OS DADOS DA MÁQUINA LOCAL PARA O DOCKER
+#### 4.1.3.1 IMPORTAR OS DADOS DA MÁQUINA LOCAL PARA O DOCKER
 
 Inicialmente, baixe os .CSV do banco de dados NORTHWIND no seguinte link e coloque todos esses arquivos em uma pasta:
 
@@ -304,7 +232,7 @@ docker cp C:\CockroachDB\CSV_NorthWind\suppliers.csv 3cac3b4ec737:/cockroach/coc
 docker cp C:\CockroachDB\CSV_NorthWind\territories.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/territories.csv
 ```
 
-## 4.1.3.2 ACESSO AO BANCO DE DADOS
+#### 4.1.3.2 ACESSO AO BANCO DE DADOS
 
 Com os arquivos copiados corretamente, utilize este comando para acessar o banco de dados do node1 (roach1, ID 3cac3b4ec737) pelo POWERSHELL ou CMD (como administrador):
 
@@ -312,7 +240,7 @@ Com os arquivos copiados corretamente, utilize este comando para acessar o banco
 .\cockroach sql --host=localhost --port=26257 --insecure
 ```
 
-## 4.1.3.2.1 CRIAÇÃO DA BASE DE DADOS
+###### 4.1.3.2.1 CRIAÇÃO DA BASE DE DADOS
 
 Com o acesso ao banco de dados, podemos criar nosso banco para que possamos importar os arquivos .CSV. Crie e selecione o banco de dados com estes comandos:
 
@@ -322,7 +250,7 @@ Com o acesso ao banco de dados, podemos criar nosso banco para que possamos impo
 ```
 
 
-## 4.1.3.2.3 CRIAÇÃO DAS TABELAS E IMPORTANDO OS DADOS
+###### 4.1.3.2.2 CRIAÇÃO DAS TABELAS E IMPORTANDO OS DADOS
 
 Após o banco ser criado, podemos criar as tabelas e inserir os dados. Como o arquivo .CSV já possui a estrutura da tabela, precisamos apenas importar os dados através do comando IMPORT TABLE, criando a tabela no processo. Abaixo segue a importação completa.
 OBS: as tabelas devem ser importadas separadamente, cada uma com o seu arquivo. Verificar se os nomes dos campos estão corretos, se o tipo de dado inserido é correto e escolher qual será a chave primária de cada tabela. Também é importante, ao criar o nome da tabela, que ele seja parecido com o nome do arquivo .CSV, para evitar o erro de, por exemplo, criar uma tabela “empregado” e inserir os dados da tabela “produto”.
@@ -497,7 +425,7 @@ docker run -d --name Homer -e 'ACCEPT_EULA=Y' -e 'SA_PASSWORD=P@ssw0rd!' -p 1433
 
 OBS: Caso ocorra um erro nesta etapa, refazer o comando substituindo o password por um mais forte.
 
-## 4.2.1 IMPORTAÇÃO DOS DADOS
+### 4.2.1 IMPORTAÇÃO DOS DADOS
 Executar a instalação do Azure Data Studio através do link:
 https://docs.microsoft.com/en-gb/sql/azure-data-studio/download-azure-data-studio?view=sql-server-2017
 
@@ -543,7 +471,7 @@ CREATE TABLE customer_demographics (
 ```
 
 
-### Nome: customers
+#### Nome: customers
 
 ```bash
 CREATE TABLE customers (
@@ -561,7 +489,7 @@ CREATE TABLE customers (
 );
 ```
 
-### Nome: customer_customer_demo
+#### Nome: customer_customer_demo
 
 ```bash
 CREATE TABLE customer_customer_demo (
@@ -573,7 +501,7 @@ CREATE TABLE customer_customer_demo (
 );
 ```
 
-### Nome: employees
+#### Nome: employees
 
 ```bash
 create TABLE employees (
@@ -599,7 +527,7 @@ create TABLE employees (
 ```
 
 
-### Nome: suppliers
+#### Nome: suppliers
 
 ```bash
 CREATE TABLE suppliers (
@@ -619,7 +547,7 @@ CREATE TABLE suppliers (
 ```
 
 
-### Nome: products
+#### Nome: products
 
 ```bash
 CREATE TABLE products (
@@ -639,7 +567,7 @@ CREATE TABLE products (
 ```
 
 
-### Nome: region
+#### Nome: region
 
 ```bash
 create TABLE region (
@@ -660,7 +588,7 @@ CREATE TABLE shippers (
 ```
 
 
-### Nome: orders
+#### Nome: orders
 
 ```bash
 CREATE TABLE orders (
@@ -685,7 +613,7 @@ CREATE TABLE orders (
 ```
 
 
-### Nome: territories
+#### Nome: territories
 
 ```bash
 create TABLE territories (
@@ -709,7 +637,7 @@ CREATE TABLE employee_territories (
 ```
 
 
-### Nome: order_details
+#### Nome: order_details
 
 ```bash
 CREATE TABLE order_details (
@@ -725,7 +653,7 @@ CREATE TABLE order_details (
 ```
 
 
-### Nome: us_states
+#### Nome: us_states
 
 ```bash
 CREATE TABLE us_states (
@@ -739,7 +667,7 @@ CREATE TABLE us_states (
 Para popular o Banco de Dados utilizar o Script disponível no anexo.
 
 
-## 5. REPLICAÇÃO
+# 5. REPLICAÇÃO
 
 ## 5.1 COCKROACHDB
 
@@ -1104,7 +1032,7 @@ executar o sqlcmd:
 docker exec -it SQLServer01 /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P#AdminSQLServer2017
 ```
 
-## 6. PROPRIEDADES ACID
+# 6. PROPRIEDADES ACID
 
 ACID é a sigla utilizada para expressar um conjunto de propriedades de transação em banco de dados, como Atomicidade, Consistência, Isolamento e Durabilidade, do inglês: Atomicity, Consistency, Isolation, Durability.
 
@@ -1152,15 +1080,15 @@ where shipper_id=7;
 insert into shippers values(7,'Correios','3003-0100');
 ```
 
-## 7. BENCHMARKING COCKROACHDB DOCS X SQL SERVER
+# 7. BENCHMARKING COCKROACHDB DOCS X SQL SERVER
 
 Não foi encontrado na literatura um benchmarking entre o CockroachDB e SQL Server. Nos benckmarking encontrados entre alguns outros sistemas NewSQL e o CockroachDB este ficou nas últimas posições.
 
 
-## 8. CONCLUSÃO
+# 8. CONCLUSÃO
 
 
-## REFERÊNCIAS
+# REFERÊNCIAS
 
 COCKROACH LABS (EUA). CockroachDB   Docs. New York: Cockroach Labs, 2020. Disponível em: https://www.cockroachlabs.com/docs/stable/. Acesso em: 21  dez. 2020.
 KNOB, Ronan; SCHREINER, Geomar; FROZZA, Angelo; MELLO, Ronaldo dos Santos. Uma Análise de Soluções NewSQL. In: ESCOLA REGIONAL DE BANCO DE DADOS (ERBD), 15.2019, Chapecó. Anais [...]. Porto Alegre: Sociedade Brasileira de Computação, 2019 . p. 21-30. ISSN 2595-413X. DOI: https://doi.org/10.5753/erbd.2019.8475.
@@ -1169,7 +1097,7 @@ MICROSOFT. Microsoft SQL documentation. [S. I.]: Microsoft, 2020. Disponível em
 
 
 
-## ANEXOS
+# ANEXOS
 
 Anexo Código completo
 
