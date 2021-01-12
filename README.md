@@ -14,30 +14,30 @@
 - [Introdução](#1-introdução)
 - [Como usar este tutorial](#2-como-usar-este-tutorial)
 - [Visão geral sobre sgbds newsql](#3-visão-geral-sobre-sgbds-newsql)
- - [SQL Server](#31-sql-server)
- - [CockroachDB](#32-cockroachdb)
- - [Comparativo entre SQL Server e CcockroachDB](#33-comparativo-entre-sql-server-e-cockroachdb)
+- [SQL Server](#31-sql-server)
+- [CockroachDB](#32-cockroachdb)
+- [Comparativo entre SQL Server e CcockroachDB](#33-comparativo-entre-sql-server-e-cockroachdb)
 - [Instalação e importação base de dados](#4-instalação-e-importação-base-de-dados)
- - [CockroachDB](#41-cockroachdb)
- - [Etapas Iniciais](#411-etapas-iniciais)
-  - [Criando e Iniciando os Nós](#412-criando-e-iniciando-os-nós)
-   - [Criando os nós](#4121-criando-os-nós)
-   - [Adicionar variáveis de ambiente ZONEINFO Windows](#4122-adicionar-variáveis-de-ambiente-zoneinfo-windows)
-   - [Iniciando os Nós](#4123-iniciando-os-nós)
-  - [Importação dos dados](#413-importação-dos-dados)
-   - [Importar os dados da máquina local para o Docker](#4131-importar-os-dados-da-máquina-local-para-o-docker)
-   - [Acesso ao banco de dados](#4132-acesso-ao-banco-de-dados)
-    - [Criação da base de dados](#41321-criação-da-base-de-dados)
-    - [Criação das tabelas e importando os dados](#41322-criação-das-tabelas-e-importando-os-dados)
-  - [SQL Server](#42-sql-server)
-   - [Importação dos dados](#421-importação-dos-dados)
+- [CockroachDB](#41-cockroachdb)
+- [Etapas Iniciais](#411-etapas-iniciais)
+ - [Criando e Iniciando os Nós](#412-criando-e-iniciando-os-nós)
+  - [Criando os nós](#4121-criando-os-nós)
+  - [Adicionar variáveis de ambiente ZONEINFO Windows](#4122-adicionar-variáveis-de-ambiente-zoneinfo-windows)
+  - [Iniciando os Nós](#4123-iniciando-os-nós)
+ - [Importação dos dados](#413-importação-dos-dados)
+  - [Importar os dados da máquina local para o Docker](#4131-importar-os-dados-da-máquina-local-para-o-docker)
+  - [Acesso ao banco de dados](#4132-acesso-ao-banco-de-dados)
+   - [Criação da base de dados](#41321-criação-da-base-de-dados)
+   - [Criação das tabelas e importando os dados](#41322-criação-das-tabelas-e-importando-os-dados)
+ - [SQL Server](#42-sql-server)
+  - [Importação dos dados](#421-importação-dos-dados)
 - [Replicação](#5-replicação)
- - [CockroachDB](#51-cockroachdb)
- - [SQL Server](#52-sql-server)
+- [CockroachDB](#51-cockroachdb)
+- [SQL Server](#52-sql-server)
 - [Propriedades ACID](#6-propriedades-acid)
- - [CockroachDB](#61-cockroachdb)
- - [SQL Server](#62-sql-server)
-- [benchmark CockroachDB x SQL Server](#7-benchmark-cockroachdb-x-sql-server)
+- [CockroachDB](#61-cockroachdb)
+- [SQL Server](#62-sql-server)
+- [Benchmark CockroachDB x SQL Server](#7-benchmark-cockroachdb-x-sql-server)
 - [Conclusão](#8-conclusão)
 - [Referências](#referências)
 - [Anexos](#anexos)
@@ -110,6 +110,7 @@ Fonte: https://db-engines.com/en/system/CockroachDB%3BMicrosoft+SQL+Server
 
 Abordaremos os passos iniciais para a instalação e operação dos sistemas Microsoft SQL Server e CockRoachDB, bem como a importação da base de dados NorthWind.
 
+![Diagrama de Entidade e Relacionamentos NorthWind](https://docs.yugabyte.com/images/sample-data/northwind/northwind-er-diagram.png)
 
 ## 4.1 COCKROACHDB
 
@@ -303,8 +304,8 @@ Com os arquivos copiados corretamente, utilize este comando para acessar o banco
 Com o acesso ao banco de dados, podemos criar nosso banco para que possamos importar os arquivos .CSV. Crie e selecione o banco de dados com estes comandos:
 
 ```bash
-    CREATE DATABASE NorthWind;
-    USE NorthWind;
+   CREATE DATABASE NorthWind;
+   USE NorthWind;
 ```
 
 
@@ -319,10 +320,10 @@ OBS3: pode ser necessário acessar cada arquivo .CSV e apagar a primeira linha. 
 
 ```bash
 IMPORT TABLE Categories (
-	CategoryID INT PRIMARY KEY,
-	CategoryName STRING NOT NULL,
-	Description STRING NOT NULL,
-	Picture STRING
+ CategoryID INT PRIMARY KEY,
+ CategoryName STRING NOT NULL,
+ Description STRING NOT NULL,
+ Picture STRING
 )
 CSV DATA ("nodelocal://1/CSV_NorthWind/categories.csv");
 
@@ -509,139 +510,139 @@ Executar *script* de criação de tabelas abaixo:
 
 ```bash
 create TABLE categories (
-    category_id int NOT NULL PRIMARY KEY,
-    category_name character varying(15) NOT NULL,
-    description text,
-    picture image
+   category_id int NOT NULL PRIMARY KEY,
+   category_name character varying(15) NOT NULL,
+   description text,
+   picture image
 );
 CREATE TABLE customer_demographics (
-    customer_type_id varchar(10) NOT NULL PRIMARY KEY,
-    customer_desc text
+   customer_type_id varchar(10) NOT NULL PRIMARY KEY,
+   customer_desc text
 );
 CREATE TABLE customers (
-    customer_id varchar(10) NOT NULL PRIMARY KEY,
-    company_name character varying(40) NOT NULL,
-    contact_name character varying(30),
-    contact_title character varying(30),
-    address character varying(60),
-    city character varying(15),
-    region character varying(15),
-    postal_code character varying(10),
-    country character varying(15),
-    phone character varying(24),
-    fax character varying(24)
+   customer_id varchar(10) NOT NULL PRIMARY KEY,
+   company_name character varying(40) NOT NULL,
+   contact_name character varying(30),
+   contact_title character varying(30),
+   address character varying(60),
+   city character varying(15),
+   region character varying(15),
+   postal_code character varying(10),
+   country character varying(15),
+   phone character varying(24),
+   fax character varying(24)
 );
 CREATE TABLE customer_customer_demo (
-    customer_id varchar(10) NOT NULL,
-    customer_type_id varchar(10) NOT NULL,
-    PRIMARY KEY (customer_id, customer_type_id),
-    FOREIGN KEY (customer_type_id) REFERENCES customer_demographics,
-    FOREIGN KEY (customer_id) REFERENCES customers
+   customer_id varchar(10) NOT NULL,
+   customer_type_id varchar(10) NOT NULL,
+   PRIMARY KEY (customer_id, customer_type_id),
+   FOREIGN KEY (customer_type_id) REFERENCES customer_demographics,
+   FOREIGN KEY (customer_id) REFERENCES customers
 );
 create TABLE employees (
-    employee_id int NOT NULL PRIMARY KEY,
-    last_name varchar(20) NOT NULL,
-    first_name varchar(10) NOT NULL,
-    title varchar(30),
-    title_of_courtesy varchar(25),
-    birth_date date,
-    hire_date date,
-    address varchar(60),
-    city varchar(15),
-    region varchar(15),
-    postal_code varchar(10),
-    country varchar(15),
-    home_phone varchar(24),
-    extension varchar(4),
-    photo image,
-    notes text,
-    reports_to smallint,
-    photo_path character varying(255)
+   employee_id int NOT NULL PRIMARY KEY,
+   last_name varchar(20) NOT NULL,
+   first_name varchar(10) NOT NULL,
+   title varchar(30),
+   title_of_courtesy varchar(25),
+   birth_date date,
+   hire_date date,
+   address varchar(60),
+   city varchar(15),
+   region varchar(15),
+   postal_code varchar(10),
+   country varchar(15),
+   home_phone varchar(24),
+   extension varchar(4),
+   photo image,
+   notes text,
+   reports_to smallint,
+   photo_path character varying(255)
 );
 CREATE TABLE suppliers (
-    supplier_id smallint NOT NULL PRIMARY KEY,
-    company_name character varying(40) NOT NULL,
-    contact_name character varying(30),
-    contact_title character varying(30),
-    address character varying(60),
-    city character varying(15),
-    region character varying(15),
-    postal_code character varying(10),
-    country character varying(15),
-    phone character varying(24),
-    fax character varying(24),
-    homepage text
+   supplier_id smallint NOT NULL PRIMARY KEY,
+   company_name character varying(40) NOT NULL,
+   contact_name character varying(30),
+   contact_title character varying(30),
+   address character varying(60),
+   city character varying(15),
+   region character varying(15),
+   postal_code character varying(10),
+   country character varying(15),
+   phone character varying(24),
+   fax character varying(24),
+   homepage text
 );
 CREATE TABLE products (
-    product_id smallint NOT NULL PRIMARY KEY,
-    product_name character varying(40) NOT NULL,
-    supplier_id smallint,
-    category_id int,
-    quantity_per_unit character varying(20),
-    unit_price real,
-    units_in_stock smallint,
-    units_on_order smallint,
-    reorder_level smallint,
-    discontinued integer NOT NULL
-	FOREIGN KEY (category_id) REFERENCES categories,
-	FOREIGN KEY (supplier_id) REFERENCES suppliers
+   product_id smallint NOT NULL PRIMARY KEY,
+   product_name character varying(40) NOT NULL,
+   supplier_id smallint,
+   category_id int,
+   quantity_per_unit character varying(20),
+   unit_price real,
+   units_in_stock smallint,
+   units_on_order smallint,
+   reorder_level smallint,
+   discontinued integer NOT NULL
+ FOREIGN KEY (category_id) REFERENCES categories,
+ FOREIGN KEY (supplier_id) REFERENCES suppliers
 );
 create TABLE region (
-    region_id int NOT NULL PRIMARY KEY,
-    region_description varchar(20) NOT NULL
+   region_id int NOT NULL PRIMARY KEY,
+   region_description varchar(20) NOT NULL
 );
 CREATE TABLE shippers (
-    shipper_id smallint NOT NULL PRIMARY KEY,
-    company_name character varying(40) NOT NULL,
-    phone character varying(24)
+   shipper_id smallint NOT NULL PRIMARY KEY,
+   company_name character varying(40) NOT NULL,
+   phone character varying(24)
 );
 CREATE TABLE orders (
-    order_id smallint NOT NULL PRIMARY KEY,
-    customer_id varchar(10),
-    employee_id int,
-    order_date date,
-    required_date date,
-    shipped_date date,
-    ship_via smallint,
-    freight real,
-    ship_name character varying(40),
-    ship_address character varying(60),
-    ship_city character varying(15),
-    ship_region character varying(15),
-    ship_postal_code character varying(10),
-    ship_country character varying(15),
-    FOREIGN KEY (customer_id) REFERENCES customers,
-    FOREIGN KEY (employee_id) REFERENCES employees,
-    FOREIGN KEY (ship_via) REFERENCES shippers
+   order_id smallint NOT NULL PRIMARY KEY,
+   customer_id varchar(10),
+   employee_id int,
+   order_date date,
+   required_date date,
+   shipped_date date,
+   ship_via smallint,
+   freight real,
+   ship_name character varying(40),
+   ship_address character varying(60),
+   ship_city character varying(15),
+   ship_region character varying(15),
+   ship_postal_code character varying(10),
+   ship_country character varying(15),
+   FOREIGN KEY (customer_id) REFERENCES customers,
+   FOREIGN KEY (employee_id) REFERENCES employees,
+   FOREIGN KEY (ship_via) REFERENCES shippers
 );
 create TABLE territories (
-    territory_id varchar(20) NOT NULL PRIMARY KEY,
-    territory_description varchar(50) NOT NULL,
-    region_id int NOT NULL,
-	FOREIGN KEY (region_id) REFERENCES region
+   territory_id varchar(20) NOT NULL PRIMARY KEY,
+   territory_description varchar(50) NOT NULL,
+   region_id int NOT NULL,
+ FOREIGN KEY (region_id) REFERENCES region
 );
 CREATE TABLE employee_territories (
-    employee_id int NOT NULL,
-    territory_id character varying(20) NOT NULL,
-    PRIMARY KEY (employee_id, territory_id),
-    FOREIGN KEY (territory_id) REFERENCES territories,
-    FOREIGN KEY (employee_id) REFERENCES employees
+   employee_id int NOT NULL,
+   territory_id character varying(20) NOT NULL,
+   PRIMARY KEY (employee_id, territory_id),
+   FOREIGN KEY (territory_id) REFERENCES territories,
+   FOREIGN KEY (employee_id) REFERENCES employees
 );
 CREATE TABLE order_details (
-    order_id smallint NOT NULL,
-    product_id smallint NOT NULL,
-    unit_price real NOT NULL,
-    quantity smallint NOT NULL,
-    discount real NOT NULL,
-    PRIMARY KEY (order_id, product_id),
-    FOREIGN KEY (product_id) REFERENCES products,
-    FOREIGN KEY (order_id) REFERENCES orders
+   order_id smallint NOT NULL,
+   product_id smallint NOT NULL,
+   unit_price real NOT NULL,
+   quantity smallint NOT NULL,
+   discount real NOT NULL,
+   PRIMARY KEY (order_id, product_id),
+   FOREIGN KEY (product_id) REFERENCES products,
+   FOREIGN KEY (order_id) REFERENCES orders
 );
 CREATE TABLE us_states (
-    state_id smallint NOT NULL PRIMARY KEY,
-    state_name character varying(100),
-    state_abbr character varying(2),
-    state_region character varying(50)
+   state_id smallint NOT NULL PRIMARY KEY,
+   state_name character varying(100),
+   state_abbr character varying(2),
+   state_region character varying(50)
 );
 ```
 
@@ -720,16 +721,16 @@ com acesso ao banco, podemos criar uma base de dados para realizar pequenos test
 ```bash
 CREATE DATABASE bank;
 CREATE TABLE bank.accounts (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-      balance DECIMAL
-  );
-  ```
+   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+     balance DECIMAL
+ );
+ ```
 Com a base de dados criada, insira alguns dados para testar se tudo está funcionando:
 
 ```bash
 INSERT INTO bank.accounts (balance)
-  VALUES
-      (1000.50), (20000), (380), (500), (55000);
+ VALUES
+     (1000.50), (20000), (380), (500), (55000);
 SELECT * FROM bank.accounts;
 ```
 
@@ -1040,7 +1041,7 @@ As propriedades ACID das transações permitem que você escreva aplicações se
 
 Para verificarmos se o banco de dados criado está respeitando as pripriedades ACID, é necessário realizar algumas operações. Para verificar a durabiliade do banco, foi feito a replicação, que permite que os dados se tornem duráveis e disponíveis.
 
-Para verificarmos a atomicidade, consistência e isolamento de dados, podemos realizar uma transação, que tem como ideal executar um bloco de comandos como INSERT, UPDATE e DELETE de forma sequencial e conjunta. Dependendo do resultado dos comandos, podemos realizar um COMMIT, que aceita todas as mudanças, ou um ROLLBACK, que retorna o banco de dados para o estado anterior a execução destes comandos. 
+Para verificarmos a atomicidade, consistência e isolamento de dados, podemos realizar uma transação, que tem como ideal executar um bloco de comandos como INSERT, UPDATE e DELETE de forma sequencial e conjunta. Dependendo do resultado dos comandos, podemos realizar um COMMIT, que aceita todas as mudanças, ou um ROLLBACK, que retorna o banco de dados para o estado anterior a execução destes comandos.
 
 Vamos testar o banco de dados criado com uma transação que contém 60 comandos, entre eles 40 INSERT, 10 UPDATE e 10 DELETE. para iniciarmos a transação, precisamos executar este comando:
 
@@ -1184,6 +1185,4 @@ Os clientes SQL Server analisando o custo-benefício de uma troca de banco de da
 
 # ANEXOS
 
-Anexo Código completo
-
-Anexo Glossário
+Códigos
