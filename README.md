@@ -1,4 +1,3 @@
-benchmark<p align="center">
 <br>Tópicos em Bancos de Dados  
 <br>Processamento Massivo de Dados
 <br>Profa. Sahudy Montenegro González </p>
