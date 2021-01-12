@@ -57,7 +57,7 @@
 Este tutorial nasce de um projeto da disciplina Tópicos em Bancos de Dados - Processamento Massivo de Dados, ministrada pela professora Dra. Sahudy Montenegro González, na UFSCar, câmpus Sorocaba.
 O objetivo é mostrar, de forma clara e prática, os principais pontos relacionados ao NewSQL e Suporte à Replicação e Propriedades ACID.
 Os bancos de dados escolhidos foram o Microsoft SQL Server o CockroachDB, o primeiro por ser um dos mais utilizados no mercado corporativo e o segundo pela afinidade da equipe.
-A base de dados definida para o projeto foi a NorthWind, base já utilizada em diversos tutoriais, cursos e exemplos, criada como exemplo no Microsoft Access e difundida até hoje, podendo ser consultada em https://docs.yugabyte.com/latest/sample-data/northwind/.
+A base de dados definida para o projeto foi a Northwind, base já utilizada em diversos tutoriais, cursos e exemplos, criada como exemplo no Microsoft Access e difundida até hoje, podendo ser consultada em https://docs.yugabyte.com/latest/sample-data/Northwind/.
 Utilizamos como referências principais as documentações  oficiais dos sistemas escolhidos: COCKROACH LABS (EUA) - https://www.cockroachlabs.com/docs/stable/ e Microsoft SQL documentation - https://docs.microsoft.com/en-us/sql/?view=sql-server-ver15.
 
 
@@ -108,9 +108,21 @@ Fonte: https://db-engines.com/en/system/CockroachDB%3BMicrosoft+SQL+Server
 
 # 4. INSTALAÇÃO E IMPORTAÇÃO BASE DE DADOS
 
-Abordaremos os passos iniciais para a instalação e operação dos sistemas Microsoft SQL Server e CockRoachDB, bem como a importação da base de dados NorthWind.
+Abordaremos os passos iniciais para a instalação e operação dos sistemas Microsoft SQL Server e CockRoachDB, bem como a importação da base de dados Northwind.
 
-![Diagrama de Entidade e Relacionamentos NorthWind](https://docs.yugabyte.com/images/sample-data/northwind/northwind-er-diagram.png)
+O banco de dados Northwind é uma base de dados testes criada pela Microsoft que vem sendo usada ao longo do tempo para tutorias e manuais. Sendo a base de dados de vendas de uma empresa fictícia chamada “Northwind Traders”, que importa e exporta alimentos especiais de todo o mundo. 
+
+O BD Northwind é composto pelas tabelas abaixo:
+- Fornecedores : fornecedores e vendedores;
+- Clientes : clientes que compram produtos;
+- Funcionários : detalhes dos funcionários de comerciantes;
+- Produtos : informações do produto;
+- Remetentes : os detalhes dos remetentes que enviam os produtos dos comerciantes aos clientes finais;
+- Pedidos e detalhes do pedido : transações de pedidos de vendas ocorrendo entre os clientes e a empresa.
+
+O banco de dados de exemplo Northwind inclui 14 tabelas e os relacionamentos da tabela são apresentados no seguinte diagrama de relacionamento de entidade. Maiores informações sobre a base de dados pode ser encontrada em https://docs.yugabyte.com/latest/sample-data/Northwind/.
+
+![Diagrama de Entidade e Relacionamentos Northwind](https://docs.yugabyte.com/images/sample-data/Northwind/Northwind-er-diagram.png)
 
 ## 4.1 COCKROACHDB
 
@@ -226,11 +238,11 @@ Fonte: Captura de tela de execução
 
 #### 4.1.3.1 IMPORTAR OS DADOS DA MÁQUINA LOCAL PARA O DOCKER
 
-Inicialmente, baixe os .CSV do banco de dados NORTHWIND no seguinte link e coloque todos esses arquivos em uma pasta:
+Inicialmente, baixe os .CSV do banco de dados Northwind no seguinte link e coloque todos esses arquivos em uma pasta:
 
-https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/northwind/data/csv
+https://github.com/graphql-compose/graphql-compose-examples/tree/master/examples/Northwind/data/csv
 
-Posteriormente, vá a “C:\CockroachDB” e crie a pasta “CSV_NorthWind”, descompacte o .rar e coloque todos os documentos dentro desta pasta.
+Posteriormente, vá a “C:\CockroachDB” e crie a pasta “CSV_Northwind”, descompacte o .rar e coloque todos os documentos dentro desta pasta.
 Com os arquivos baixados, é necessário identificar os nomes dos nós com esse comando:
 
 ```bash
@@ -255,7 +267,7 @@ Ao abrir o node, é necessário criar as seguintes pastas (essas pastas vão arm
 ```bash
 mkdir extern
 cd extern
-mkdir CSV_NorthWind
+mkdir CSV_Northwind
 ```
 
 Agora, devemos copiar cada arquivo .CSV separadamente para dentro do node utilizando o Docker. OBS: Pode ser necessário fazer essa etapa para todos os nós, caso a réplica não esteja funcionando adequadamente.
@@ -268,27 +280,27 @@ docker cp <path-file-host>/doc.csv <CONTAINER ID:/PATH-NEW-FILE>
 OBS:  verificar se o nome do arquivo e seu local estão escritos corretamente, bem como se o ID do node e a pasta criada estão escritos corretamente. Os comandos podem ser executados de forma separada ou juntos. Se o comando for concluído sem erros, o CMD ou o POWERSHELL não vão retornar nenhuma linha de informação.
 
 ```bash
-docker cp C:\CockroachDB\CSV_NorthWind\categories.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/categories.csv
+docker cp C:\CockroachDB\CSV_Northwind\categories.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/categories.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\customers.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/customers.csv
+docker cp C:\CockroachDB\CSV_Northwind\customers.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/customers.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\employee_territories.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/employee_territories.csv
+docker cp C:\CockroachDB\CSV_Northwind\employee_territories.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/employee_territories.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\employees.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/employees.csv
+docker cp C:\CockroachDB\CSV_Northwind\employees.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/employees.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\order_details.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/order_details.csv
+docker cp C:\CockroachDB\CSV_Northwind\order_details.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/order_details.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\orders.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/orders.csv
+docker cp C:\CockroachDB\CSV_Northwind\orders.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/orders.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\products.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/products.csv
+docker cp C:\CockroachDB\CSV_Northwind\products.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/products.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\regions.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/regions.csv
+docker cp C:\CockroachDB\CSV_Northwind\regions.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/regions.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\shippers.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/shippers.csv
+docker cp C:\CockroachDB\CSV_Northwind\shippers.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/shippers.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\suppliers.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/suppliers.csv
+docker cp C:\CockroachDB\CSV_Northwind\suppliers.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/suppliers.csv
 
-docker cp C:\CockroachDB\CSV_NorthWind\territories.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_NorthWind/territories.csv
+docker cp C:\CockroachDB\CSV_Northwind\territories.csv 3cac3b4ec737:/cockroach/cockroach-data/extern/CSV_Northwind/territories.csv
 ```
 
 #### 4.1.3.2 ACESSO AO BANCO DE DADOS
@@ -304,8 +316,8 @@ Com os arquivos copiados corretamente, utilize este comando para acessar o banco
 Com o acesso ao banco de dados, podemos criar nosso banco para que possamos importar os arquivos .CSV. Crie e selecione o banco de dados com estes comandos:
 
 ```bash
-   CREATE DATABASE NorthWind;
-   USE NorthWind;
+   CREATE DATABASE Northwind;
+   USE Northwind;
 ```
 
 
@@ -325,7 +337,7 @@ IMPORT TABLE Categories (
  Description STRING NOT NULL,
  Picture STRING
 )
-CSV DATA ("nodelocal://1/CSV_NorthWind/categories.csv");
+CSV DATA ("nodelocal://1/CSV_Northwind/categories.csv");
 
 IMPORT TABLE Customers (
 CustomerID STRING PRIMARY KEY,
@@ -340,20 +352,20 @@ Country STRING NOT NULL,
 Phone STRING,
 Fax STRING
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/customers.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/customers.csv”);
 
 IMPORT TABLE Regions (
 RegionID INT PRIMARY KEY,
 RegionDescription STRING NOT NULL
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/regions.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/regions.csv”);
 
 IMPORT TABLE Shippers (
 shipperID INT PRIMARY KEY,
 companyName STRING NOT NULL,
 phone STRING NOT NULL
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/shippers.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/shippers.csv”);
 
 IMPORT TABLE Suppliers (
 supplierID INT PRIMARY KEY,
@@ -369,14 +381,14 @@ phone STRING NOT NULL,
 fax STRING,
 homePage STRING
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/suppliers.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/suppliers.csv”);
 
 IMPORT TABLE Territories (
 territoryID STRING PRIMARY KEY,
 territoryDescription STRING NOT NULL,
 regionID BIGINT NOT NULL
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/territories.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/territories.csv”);
 
 IMPORT TABLE Employees (
 EmployeeID INT PRIMARY KEY,
@@ -398,7 +410,7 @@ notes STRING NOT NULL,
 reportsTo STRING,
 photoPath STRING NOT NULL
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/employees.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/employees.csv”);
 
 IMPORT TABLE Order_details (
 OrderID INT NOT NULL,
@@ -407,7 +419,7 @@ UnitPrice STRING NOT NULL,
 Quantity INT NOT NULL,
 Discount STRING NOT NULL
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/order_details.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/order_details.csv”);
 
 IMPORT TABLE Orders (
 OrderID INT PRIMARY KEY,
@@ -425,7 +437,7 @@ shipRegion STRING,
 shipPostalCode STRING NOT NULL,
 shipCountry STRING NOT NULL
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/orders.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/orders.csv”);
 
 IMPORT TABLE Products (
 ProductID INT NOT NULL,
@@ -439,13 +451,13 @@ UnitsOnOrder INT NOT NULL,
 ReorderLevel INT NOT NULL,
 Discontinued INT NOT NULL
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/products.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/products.csv”);
 
 IMPORT TABLE Employee_territories (
 EmployeeID INT NOT NULL,
 TerritoryID STRING NOT NULL
 )
-CSV DATA (“nodelocal://1/CSV_NorthWind/employee_territories.csv”);
+CSV DATA (“nodelocal://1/CSV_Northwind/employee_territories.csv”);
 ```
 
 Com o banco de dados criado e com todos os dados importados, realize alguns comandos para testar se os dados foram inseridos corretamente. Abaixo seguem alguns comandos que podem ser utilizados para este fim.
@@ -502,10 +514,10 @@ Server Group: <default>
 Executar *script* de criação de banco, abaixo:
 
 ```bash
-create database northwind;
+create database Northwind;
 ```
 
-Selecionar banco de dados northwind.
+Selecionar banco de dados Northwind.
 Executar *script* de criação de tabelas abaixo:
 
 ```bash
