@@ -658,7 +658,7 @@ CREATE TABLE us_states (
 );
 ```
 
-Para popular o Banco de Dados utilizar o *script* [a relative link](../anexo/data_sql_server)  disponível no anexo.
+Para popular o Banco de Dados utilizar o *[script]* disponível no anexo.
 
 
 # 5. REPLICAÇÃO
@@ -1196,5 +1196,4 @@ Os clientes SQL Server analisando o custo-benefício de uma troca de banco de da
 
 
 # ANEXOS
-
-Códigos
+[https://github.com/aareao/newsql_replicacao_acid/anexo/data_sql_server]
