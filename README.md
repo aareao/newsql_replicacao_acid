@@ -1194,4 +1194,4 @@ Os clientes SQL Server analisando o custo-benefício de uma troca de banco de da
 
 
 # ANEXOS
-https://github.com/aareao/newsql_replicacao_acid/blob/main/anexo/data_sql_server
+[Script](anexo/data_sql_server.sql)
