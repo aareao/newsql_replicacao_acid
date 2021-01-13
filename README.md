@@ -658,7 +658,7 @@ CREATE TABLE us_states (
 );
 ```
 
-Para popular o Banco de Dados utilizar o *script* disponível no anexo.
+Para popular o Banco de Dados utilizar o *script*[anexo/data_sql_server]  disponível no anexo.
 
 
 # 5. REPLICAÇÃO
