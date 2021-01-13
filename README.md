@@ -658,7 +658,7 @@ CREATE TABLE us_states (
 );
 ```
 
-Para popular o Banco de Dados utilizar o *[script]* disponível no anexo.
+Para popular o Banco de Dados utilizar o *[script](anexo/data_sql_server.sql)* disponível no anexo.
 
 
 # 5. REPLICAÇÃO
@@ -1193,7 +1193,5 @@ Os clientes SQL Server analisando o custo-benefício de uma troca de banco de da
 - MICROSOFT. Microsoft SQL documentation. [S. I.]: Microsoft, 2020. Disponível em: https://docs.microsoft.com/en-us/sql/?view=sql-server-ver15. Acesso em: 18 out. 2020.
 
 
-
-
 # ANEXOS
-[https://github.com/aareao/newsql_replicacao_acid/anexo/data_sql_server]
+https://github.com/aareao/newsql_replicacao_acid/blob/main/anexo/data_sql_server
